@@ -1,0 +1,524 @@
+//Maya Preference 8.50 (Release 1)
+//
+//
+
+nameCommand
+	-annotation "ScriptEditorNameCommand"
+	-command ("ScriptEditor")
+	ScriptEditorNameCommand;
+
+nameCommand
+	-annotation "HotkeyPreferencesWindowNameCommand"
+	-command ("HotkeyPreferencesWindow")
+	HotkeyPreferencesWindowNameCommand;
+
+nameCommand
+	-annotation "WindowJKey_PressNameCommand"
+	-command ("WindowJKey_Press")
+	WindowJKey_PressNameCommand;
+
+nameCommand
+	-annotation "WindowJKey_ReleaseNameCommand"
+	-command ("WindowJKey_Release")
+	WindowJKey_ReleaseNameCommand;
+
+nameCommand
+	-annotation "WindowKKey_PressNameCommand"
+	-command ("WindowKKey_Press")
+	WindowKKey_PressNameCommand;
+
+nameCommand
+	-annotation "WindowKKey_ReleaseNameCommand"
+	-command ("WindowKKey_Release")
+	WindowKKey_ReleaseNameCommand;
+
+nameCommand
+	-annotation "builderMenu_PressNameCommand"
+	-command ("builderMenu_Press")
+	builderMenu_PressNameCommand;
+
+nameCommand
+	-annotation "builderMenu_ReleaseNameCommand"
+	-command ("builderMenu_Release")
+	builderMenu_ReleaseNameCommand;
+
+nameCommand
+	-annotation "ControlPaneVisibility_02_PressNameCommand"
+	-command ("ControlPaneVisibility_02_Press")
+	ControlPaneVisibility_02_PressNameCommand;
+
+nameCommand
+	-annotation "ControlPaneVisibility_02_ReleaseNameCommand"
+	-command ("ControlPaneVisibility_02_Release")
+	ControlPaneVisibility_02_ReleaseNameCommand;
+
+nameCommand
+	-annotation "Smooth_Menu_PressNameCommand"
+	-command ("Smooth_Menu_Press")
+	Smooth_Menu_PressNameCommand;
+
+nameCommand
+	-annotation "Smooth_Menu_ReleaseNameCommand"
+	-command ("Smooth_Menu_Release")
+	Smooth_Menu_ReleaseNameCommand;
+
+nameCommand
+	-annotation "UndoNameCommand"
+	-command ("Undo")
+	UndoNameCommand;
+
+nameCommand
+	-annotation "OutlinerWindowNameCommand"
+	-command ("OutlinerWindow")
+	OutlinerWindowNameCommand;
+
+nameCommand
+	-annotation "DeleteHistoryNameCommand"
+	-command ("DeleteHistory")
+	DeleteHistoryNameCommand;
+
+nameCommand
+	-annotation "Shaded_ToggleNameCommand"
+	-command ("Shaded_Toggle")
+	Shaded_ToggleNameCommand;
+
+nameCommand
+	-annotation "WireOnShaded_ToglleNameCommand"
+	-command ("WireOnShaded_Toglle")
+	WireOnShaded_ToglleNameCommand;
+
+nameCommand
+	-annotation "headUpNameSelectionNameCommand"
+	-command ("headUpNameSelection")
+	headUpNameSelectionNameCommand;
+
+nameCommand
+	-annotation "selectVertexMaskNameCommand"
+	-command ("selectVertexMask")
+	selectVertexMaskNameCommand;
+
+nameCommand
+	-annotation "selectEdgeMaskNameCommand"
+	-command ("selectEdgeMask")
+	selectEdgeMaskNameCommand;
+
+nameCommand
+	-annotation "selectFaceMaskNameCommand"
+	-command ("selectFaceMask")
+	selectFaceMaskNameCommand;
+
+nameCommand
+	-annotation "selectObjetModeNameCommand"
+	-command ("selectObjetMode")
+	selectObjetModeNameCommand;
+
+nameCommand
+	-annotation "selectObjectModeNameCommand"
+	-command ("selectObjectMode")
+	selectObjectModeNameCommand;
+
+nameCommand
+	-annotation "SelectToolNameCommand"
+	-command ("SelectTool")
+	SelectToolNameCommand;
+
+nameCommand
+	-annotation "SelectToggleModeNameCommand"
+	-command ("SelectToggleMode")
+	SelectToggleModeNameCommand;
+
+nameCommand
+	-annotation "symWorkTransferNameCommand"
+	-command ("symWorkTransfer")
+	symWorkTransferNameCommand;
+
+nameCommand
+	-annotation "ProportionalModificationToolNameCommand"
+	-command ("ProportionalModificationTool")
+	ProportionalModificationToolNameCommand;
+
+nameCommand
+	-annotation "SoftModToolNameCommand"
+	-command ("SoftModTool")
+	SoftModToolNameCommand;
+
+nameCommand
+	-annotation "RenderViewWindowNameCommand"
+	-command ("RenderViewWindow")
+	RenderViewWindowNameCommand;
+
+nameCommand
+	-annotation "frameSelectionViewNameCommand"
+	-command ("frameSelectionView")
+	frameSelectionViewNameCommand;
+
+nameCommand
+	-annotation "FrameSelectedNameCommand"
+	-command ("FrameSelected")
+	FrameSelectedNameCommand;
+
+nameCommand
+	-annotation "toggleMainBarNameCommand"
+	-command ("toggleMainBar")
+	toggleMainBarNameCommand;
+
+nameCommand
+	-annotation "Open Scene"
+	-command ("OpenScene")
+	OpenSceneCommand;
+
+nameCommand
+	-annotation "Save Scene"
+	-command ("SaveScene")
+	SaveSceneCommand;
+
+nameCommand
+	-annotation "Tickle Marking Menu (Show)"
+	-command ("tklUIMarkingMenuShow")
+	tklUIMarkingMenuShowCommand;
+
+nameCommand
+	-annotation "Tickle Marking Menu (Hide)"
+	-command ("tklUIMarkingMenuHide")
+	tklUIMarkingMenuHideCommand;
+
+nameCommand
+	-annotation "SelectVertexMaskNameCommand"
+	-command ("SelectVertexMask")
+	SelectVertexMaskNameCommand;
+
+nameCommand
+	-annotation "SelectEdgeMaskNameCommand"
+	-command ("SelectEdgeMask")
+	SelectEdgeMaskNameCommand;
+
+nameCommand
+	-annotation "SelectFacetMaskNameCommand"
+	-command ("SelectFacetMask")
+	SelectFacetMaskNameCommand;
+
+nameCommand
+	-annotation "SaveSceneAsNameCommand"
+	-command ("SaveSceneAs")
+	SaveSceneAsNameCommand;
+
+nameCommand
+	-annotation "ImportNameCommand"
+	-command ("Import")
+	ImportNameCommand;
+
+nameCommand
+	-annotation "ToggleGridNameCommand"
+	-command ("ToggleGrid")
+	ToggleGridNameCommand;
+
+nameCommand
+	-annotation "SplitPolygonToolNameCommand"
+	-command ("SplitPolygonTool")
+	SplitPolygonToolNameCommand;
+
+nameCommand
+	-annotation "PA_Style_MMB_PressNameCommand"
+	-command ("PA_Style_MMB_Press")
+	PA_Style_MMB_PressNameCommand;
+
+nameCommand
+	-annotation "PA_Style_MMB_ReleaseNameCommand"
+	-command ("PA_Style_MMB_Release")
+	PA_Style_MMB_ReleaseNameCommand;
+
+nameCommand
+	-annotation "ToggleFaceNormalDisplayNameCommand"
+	-command ("ToggleFaceNormalDisplay")
+	ToggleFaceNormalDisplayNameCommand;
+
+nameCommand
+	-annotation "HideSelectedObjectsNameCommand"
+	-command ("HideSelectedObjects")
+	HideSelectedObjectsNameCommand;
+
+nameCommand
+	-annotation "ShowSelectedObjectsNameCommand"
+	-command ("ShowSelectedObjects")
+	ShowSelectedObjectsNameCommand;
+
+nameCommand
+	-annotation "SelectHierarchyNameCommand"
+	-command ("SelectHierarchy")
+	SelectHierarchyNameCommand;
+
+nameCommand
+	-annotation "frameSelectedViewNameCommand"
+	-command ("frameSelectedView")
+	frameSelectedViewNameCommand;
+
+nameCommand
+	-annotation "AppendToPolygonToolNameCommand"
+	-command ("AppendToPolygonTool")
+	AppendToPolygonToolNameCommand;
+
+nameCommand
+	-annotation "RenderGlobalsWindowNameCommand"
+	-command ("RenderGlobalsWindow")
+	RenderGlobalsWindowNameCommand;
+
+nameCommand
+	-annotation "Snap_PressNameCommand"
+	-command ("Snap_Press")
+	Snap_PressNameCommand;
+
+nameCommand
+	-annotation "Snap_ReleaseNameCommand"
+	-command ("Snap_Release")
+	Snap_ReleaseNameCommand;
+
+nameCommand
+	-annotation "CutPolygonNameCommand"
+	-command ("CutPolygon")
+	CutPolygonNameCommand;
+
+nameCommand
+	-annotation "DeleteNameCommand"
+	-command ("Delete")
+	DeleteNameCommand;
+
+nameCommand
+	-annotation "Toggle_shadedNameCommand"
+	-command ("Toggle_shaded")
+	Toggle_shadedNameCommand;
+
+nameCommand
+	-annotation "Toggle_wireframeOnShadedNameCommand"
+	-command ("Toggle_wireframeOnShaded")
+	Toggle_wireframeOnShadedNameCommand;
+
+nameCommand
+	-annotation "Look_SelectedNameCommand"
+	-command ("Look_Selected")
+	Look_SelectedNameCommand;
+
+nameCommand
+	-annotation "attributeMan_PressNameCommand"
+	-command ("attributeMan_Press")
+	attributeMan_PressNameCommand;
+
+nameCommand
+	-annotation "attributeMan_ReleaseNameCommand"
+	-command ("attributeMan_Release")
+	attributeMan_ReleaseNameCommand;
+
+nameCommand
+	-annotation "CenterPivotNameCommand"
+	-command ("CenterPivot")
+	CenterPivotNameCommand;
+
+nameCommand
+	-annotation "DisplayShadingMarkingMenuNameCommand"
+	-command ("DisplayShadingMarkingMenu")
+	DisplayShadingMarkingMenuNameCommand;
+
+nameCommand
+	-annotation "DisplayShadingMarkingMenuPopDownNameCommand"
+	-command ("DisplayShadingMarkingMenuPopDown")
+	DisplayShadingMarkingMenuPopDownNameCommand;
+
+nameCommand
+	-annotation "RedoNameCommand"
+	-command ("Redo")
+	RedoNameCommand;
+
+nameCommand
+	-annotation "EnterEditModeNameCommand"
+	-command ("EnterEditMode")
+	EnterEditModeNameCommand;
+
+nameCommand
+	-annotation "HeadsUpSnapNameCommand"
+	-command ("HeadsUpSnap")
+	HeadsUpSnapNameCommand;
+
+nameCommand
+	-annotation "headsUpSelectionNameCommand"
+	-command ("headsUpSelection")
+	headsUpSelectionNameCommand;
+
+nameCommand
+	-annotation "headsUpSnapNameCommand"
+	-command ("headsUpSnap")
+	headsUpSnapNameCommand;
+
+nameCommand
+	-annotation "ShowManipulatorsNameCommand"
+	-command ("ShowManipulators")
+	ShowManipulatorsNameCommand;
+
+nameCommand
+	-annotation "DuplicateWithTransformNameCommand"
+	-command ("DuplicateWithTransform")
+	DuplicateWithTransformNameCommand;
+
+nameCommand
+	-annotation "TimeDraggerToolActivateNameCommand"
+	-command ("TimeDraggerToolActivate")
+	TimeDraggerToolActivateNameCommand;
+
+nameCommand
+	-annotation "TimeDraggerToolDeactivateNameCommand"
+	-command ("TimeDraggerToolDeactivate")
+	TimeDraggerToolDeactivateNameCommand;
+
+nameCommand
+	-annotation "clearSelectedNameCommand"
+	-command ("clearSelected")
+	clearSelectedNameCommand;
+
+nameCommand
+	-annotation "Toggle_xrayNameCommand"
+	-command ("Toggle_xray")
+	Toggle_xrayNameCommand;
+
+nameCommand
+	-annotation "xCameraNameCommand"
+	-command ("xCamera")
+	xCameraNameCommand;
+
+nameCommand
+	-annotation "layerManager_PressNameCommand"
+	-command ("layerManager_Press")
+	layerManager_PressNameCommand;
+
+nameCommand
+	-annotation "layerManager_ReleaseNameCommand"
+	-command ("layerManager_Release")
+	layerManager_ReleaseNameCommand;
+
+nameCommand
+	-annotation "CamerasLight_PressNameCommand"
+	-command ("CamerasLight_Press")
+	CamerasLight_PressNameCommand;
+
+nameCommand
+	-annotation "CamerasLight_ReleaseNameCommand"
+	-command ("CamerasLight_Release")
+	CamerasLight_ReleaseNameCommand;
+
+nameCommand
+	-annotation "SelectToolMarkingMenuNameCommand"
+	-command ("SelectToolMarkingMenu")
+	SelectToolMarkingMenuNameCommand;
+
+nameCommand
+	-annotation "SelectMenu_ReleaseNameCommand"
+	-command ("SelectMenu_Release")
+	SelectMenu_ReleaseNameCommand;
+
+nameCommand
+	-annotation "SelectMenu_R_ReleaseNameCommand"
+	-command ("SelectMenu_R_Release")
+	SelectMenu_R_ReleaseNameCommand;
+
+nameCommand
+	-annotation "SelectMenu_PressNameCommand"
+	-command ("SelectMenu_Press")
+	SelectMenu_PressNameCommand;
+
+nameCommand
+	-annotation "CreatePolygonToolNameCommand"
+	-command ("CreatePolygonTool")
+	CreatePolygonToolNameCommand;
+
+nameCommand
+	-annotation "SlideEdgeToolNameCommand"
+	-command ("SlideEdgeTool")
+	SlideEdgeToolNameCommand;
+
+nameCommand
+	-annotation "InsertEdgeLoopToolNameCommand"
+	-command ("InsertEdgeLoopTool")
+	InsertEdgeLoopToolNameCommand;
+
+nameCommand
+	-annotation "TogglePolyCountNameCommand"
+	-command ("TogglePolyCount")
+	TogglePolyCountNameCommand;
+
+nameCommand
+	-annotation "deleteUnusedNodesNameCommand"
+	-command ("deleteUnusedNodes")
+	deleteUnusedNodesNameCommand;
+
+nameCommand
+	-annotation "transferSelectionNameCommand"
+	-command ("transferSelection")
+	transferSelectionNameCommand;
+
+nameCommand
+	-annotation "PaintEffectsPanelNameCommand"
+	-command ("PaintEffectsPanel")
+	PaintEffectsPanelNameCommand;
+
+nameCommand
+	-annotation "MergeVerticesNameCommand"
+	-command ("MergeVertices")
+	MergeVerticesNameCommand;
+
+nameCommand
+	-annotation "SetKeyTranslateNameCommand"
+	-command ("SetKeyTranslate")
+	SetKeyTranslateNameCommand;
+
+nameCommand
+	-annotation "SetKeyRotateNameCommand"
+	-command ("SetKeyRotate")
+	SetKeyRotateNameCommand;
+
+nameCommand
+	-annotation "SetKeyNameCommand"
+	-command ("SetKey")
+	SetKeyNameCommand;
+
+nameCommand
+	-annotation "ExportSelectionNameCommand"
+	-command ("ExportSelection")
+	ExportSelectionNameCommand;
+
+nameCommand
+	-annotation "SelectToolMarkingMenuPopDownNameCommand"
+	-command ("SelectToolMarkingMenuPopDown")
+	SelectToolMarkingMenuPopDownNameCommand;
+
+nameCommand
+	-annotation "toggleLayerOneNameCommand"
+	-command ("toggleLayerOne")
+	toggleLayerOneNameCommand;
+
+nameCommand
+	-annotation "toggleLayerTwoNameCommand"
+	-command ("toggleLayerTwo")
+	toggleLayerTwoNameCommand;
+
+nameCommand
+	-annotation "toggleLayerThreeNameCommand"
+	-command ("toggleLayerThree")
+	toggleLayerThreeNameCommand;
+
+nameCommand
+	-annotation "toggleLayerFourNameCommand"
+	-command ("toggleLayerFour")
+	toggleLayerFourNameCommand;
+
+nameCommand
+	-annotation "highQualityNameCommand"
+	-command ("highQuality")
+	highQualityNameCommand;
+
+nameCommand
+	-annotation "lowQualityNameCommand"
+	-command ("lowQuality")
+	lowQualityNameCommand;
+
+nameCommand
+	-annotation "BridgeEdgeNameCommand"
+	-command ("BridgeEdge")
+	BridgeEdgeNameCommand;
+

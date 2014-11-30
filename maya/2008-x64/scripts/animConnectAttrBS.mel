@@ -1,0 +1,26 @@
+//----------------------------------------------------------------------
+// Create and Connect the targets of a blendshape to animation attributs
+//----------------------------------------------------------------------
+
+global proc animConnectAttrBS (string $nomBlendShape, string $anim)
+
+	int $u;
+	int $nbrTargets;
+	int $numTarget;
+	string $nomTargets[];
+	string $tempName[];
+
+	$nbrTargets = `blendShape -q -weightCount ($nomBlendShape + ".weight")`;
+	for ($u=0; $u<$nbrTargets; $u++)
+	{
+		$tempName = `listAttr ($nomBlendShape + ".weight[" + $u + "]")`;
+		$nomTargets[$u] = $tempName[0];
+	}
+
+	print $nomTargets;
+	for($i in $nomTargets)
+	{
+		addAttr -ln $i  -at double  -min 0 -max 1 -dv 0 $anim;
+		setAttr -e-keyable true ($anim + "." + $i);
+		connectAttr -f ($anim + "." + $i) ($nomBlendShape + "." + $i);
+	}

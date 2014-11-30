@@ -1,0 +1,191 @@
+
+    menuItem
+        -label "Pick Nothing" 
+        -divider 0
+        -subMenu 0
+        -command "selectionMaskRestoreOnce(); selectMode -root; select -clear" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "N" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 1
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem;
+
+    menuItem
+        -label "PickCurvOnSurf" 
+        -divider 0
+        -subMenu 0
+        -command "selectionMaskSaveOnce(); selectMode -object; selectType -allObjects false; selectType -curveOnSurface true" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "NE" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem4;
+
+    menuItem
+        -label "Pick CV" 
+        -divider 0
+        -subMenu 0
+        -command "selectionMaskSaveOnce(); selectMode -component; selectType -allComponents false; selectType -controlVertex true" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "E" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 1
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem3;
+
+    menuItem
+        -label "Pick Pivot Point" 
+        -divider 0
+        -subMenu 0
+        -command "selectionMaskSaveOnce(); selectMode -component; selectType -allComponents false; selectType -rotatePivot true -scalePivot true" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "SE" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 1
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem7;
+
+    menuItem
+        -label "Pick Obj Root" 
+        -divider 0
+        -subMenu 0
+        -command "selectionMaskRestoreOnce(); select -clear; selectMode -root" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "S" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 1
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem1;
+
+    menuItem
+        -label "Pick Obj Comp" 
+        -divider 0
+        -subMenu 0
+        -command "selectionMaskRestoreOnce(); selectMode -object" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "SW" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 1
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem6;
+
+    menuItem
+        -label "Pick Template" 
+        -divider 0
+        -subMenu 0
+        -command "selectionMaskRestoreOnce(); select -clear; selectMode -template" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "W" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 1
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem2;
+
+    menuItem
+        -label "PikIsoTrmCP" 
+        -divider 0
+        -subMenu 0
+        -command "selectionMaskSaveOnce(); selectPref -allowHiliteSelection false; selectMode -component; selectType -isoparm true -surfaceEdge true -curveParameterPoint true;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "NW" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem5;
+
+    menuItem
+        -label "Show HotBox" 
+        -divider 0
+        -subMenu 0
+        -command "hotBox -dh" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 1
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem8;
+
+setParent -m ..;
+

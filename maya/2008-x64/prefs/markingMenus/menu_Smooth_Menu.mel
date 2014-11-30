@@ -1,0 +1,127 @@
+
+    menuItem
+        -label "DeleteAllSmooth" 
+        -divider 0
+        -subMenu 0
+        -command "string $sels[] = `ls -typ \"polySmoothFace\"`;\r\n\r\n\tfor ($cursmooth2 in $sels)\r\n\t{\r\n\t\tselect $cursmooth2;\r\n\r\n\t\tif( ( false == `connectionInfo -isDestination ($cursmooth2 + \".divisions\")`)&&\r\n\t\t\t( false == `connectionInfo -isLocked ($cursmooth2 + \".divisions\")`) )\r\n\t\t{\r\n\t\t\tstring $Eval =\"setAttr \"+$cursmooth2 + \".divisions\"  + \" 0;\";\r\n\t\t \teval($Eval);\r\n\t\t \tdelete;\r\n\t\t}\r\n \t};" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "N" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem13;
+
+    menuItem
+        -label "delete smooth" 
+        -divider 0
+        -subMenu 0
+        -command "\r\nstring $his[] = `listHistory`;\r\nselect $his;\r\nstring $sels[] = `ls -sl -typ \"polySmoothFace\"`;\r\n\r\n\tfor ($cursmooth2 in $sels)\r\n\t{\r\n\t\tselect $cursmooth2;\r\n\r\n\t\tif( ( false == `connectionInfo -isDestination ($cursmooth2 + \".divisions\")`)&&\r\n\t\t\t( false == `connectionInfo -isLocked ($cursmooth2 + \".divisions\")`) )\r\n\t\t{\r\n\t\t\tstring $Eval =\"setAttr \"+$cursmooth2 + \".divisions\"  + \" 0;\";\r\n\t\t \teval($Eval);\r\n\t\t \tdelete;\r\n\t\t}\r\n \t};" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "E" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem12;
+
+    menuItem
+        -label "Smooth 2" 
+        -divider 0
+        -subMenu 0
+        -command "polyPerformAction \"polySmooth  -dv 2 -c 1 -kb 0 -ksb 1 -kt 1\" f 0" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "S" 
+        -enableCommandRepeat 1
+        -image "polySmooth.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem10;
+
+    menuItem
+        -label "ELFdefaultMenuItem" 
+        -divider 0
+        -subMenu 0
+        -command "performPolySmooth 1" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 1
+        -enable 1
+        -data 0
+        -radialPosition "S" 
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem11;
+
+    menuItem
+        -label "Smooth 1 " 
+        -divider 0
+        -subMenu 0
+        -command "polyPerformAction \"polySmooth  -mth 0 -dv 1 -c 1 -kb 0 -ksb 1 -khe 0 -kt 1 -sl 1 -dpe 1 -ps 0.1 -ro 1\" f 0" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "W" 
+        -enableCommandRepeat 1
+        -image "polySmooth.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem6;
+
+    menuItem
+        -label "ELFdefaultMenuItem" 
+        -divider 0
+        -subMenu 0
+        -command "performPolySmooth 1" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 1
+        -enable 1
+        -data 0
+        -radialPosition "W" 
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem7;
+
+setParent -m ..;
+

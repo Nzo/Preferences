@@ -1,0 +1,221 @@
+
+    menuItem
+        -label "Perspective View" 
+        -divider 0
+        -subMenu 0
+        -command "switchModelView Perspective" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "N" 
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem255;
+
+    menuItem
+        -label "Side View" 
+        -divider 0
+        -subMenu 0
+        -command "switchModelView side" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "E" 
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem256;
+
+    menuItem
+        -label "Hotbox Style" 
+        -divider 0
+        -subMenu 1
+        -tearOff 0
+        -enable 1
+        -data 0
+        -radialPosition "SE" 
+        -allowOptionBoxes 1
+        -postMenuCommandOnce 0
+        -italicized 0
+        -boldFont 0
+        menuItem259;
+
+        menuItem
+            -label "Zones and Menu Rows" 
+            -divider 0
+            -subMenu 0
+            -command "hotBox -dh" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -enableCommandRepeat 1
+            -echoCommand 0
+            -italicized 0
+            -boldFont 0
+            menuItem260;
+
+        menuItem
+            -label "Zones Only" 
+            -divider 0
+            -subMenu 0
+            -command "hotBox -dzo" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -enableCommandRepeat 1
+            -echoCommand 0
+            -italicized 0
+            -boldFont 0
+            menuItem261;
+
+        menuItem
+            -label "Center Zone Only" 
+            -divider 0
+            -subMenu 0
+            -command "hotBox -dco" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -enableCommandRepeat 1
+            -echoCommand 0
+            -italicized 0
+            -boldFont 0
+            menuItem262;
+
+    setParent -m ..;
+
+    menuItem
+        -label "Front View" 
+        -divider 0
+        -subMenu 0
+        -command "switchModelView front" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "S" 
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem257;
+
+    menuItem
+        -label "Top View" 
+        -divider 0
+        -subMenu 0
+        -command "switchModelView top" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "W" 
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem258;
+
+    menuItem
+        -label "HOTKEY" 
+        -divider 0
+        -subMenu 0
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem9;
+
+    menuItem
+        -divider 1
+        -subMenu 0
+        -data 0
+        menuEditorMenuItem10;
+
+
+    menuItem
+        -label "DEFAULT" 
+        -divider 0
+        -subMenu 0
+        -command "hotkey -factorySettings;toggleAllMainWindowComponentsVisible;window -e -mbv true $gMainWindow;toggleMenuBarsInPanels true;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem26;
+
+    menuItem
+        -label "NZO" 
+        -divider 0
+        -subMenu 0
+        -command "nzoHK;toggleAllMainWindowComponentsVisible;window -e -mbv false $gMainWindow;toggleMenuBarsInPanels false;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem27;
+
+setParent -m ..;
+

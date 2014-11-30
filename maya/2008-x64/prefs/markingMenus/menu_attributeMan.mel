@@ -1,0 +1,507 @@
+
+    menuItem
+        -label "Clear Attributes" 
+        -divider 0
+        -subMenu 0
+        -command "clear $attrManSelection;\nclear $attrManTranslate;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "N" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem31;
+
+    menuItem
+        -label "Copy Attribute" 
+        -divider 0
+        -subMenu 1
+        -tearOff 0
+        -enable 1
+        -data 0
+        -radialPosition "NE" 
+        -allowOptionBoxes 1
+        -postMenuCommandOnce 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem39;
+
+        menuItem
+            -label "Copy All 3" 
+            -divider 0
+            -subMenu 0
+            -command "string $attrManInputSelection[]=`ls -sl`;\nfor($i in $attrManInputSelection)\n{\nsetAttr ($i + \".translate\") ($attrManTranslate.x) ($attrManTranslate.y) ($attrManTranslate.z);\nsetAttr ($i + \".rotate\") ($attrManRotate.x) ($attrManRotate.y) ($attrManRotate.z);\nsetAttr ($i + \".scale\") ($attrManScale.x) ($attrManScale.y) ($attrManScale.z);\n}" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "N" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem43;
+
+        menuItem
+            -label "Copy Translate" 
+            -divider 0
+            -subMenu 0
+            -command "string $attrManInputSelection[]=`ls -sl`;\nfor($i in $attrManInputSelection)\n{\nsetAttr ($i + \".translate\") ($attrManTranslate.x) ($attrManTranslate.y) ($attrManTranslate.z);\n}" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "NE" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem40;
+
+        menuItem
+            -label "Copy Rotate" 
+            -divider 0
+            -subMenu 0
+            -command "string $attrManInputSelection[]=`ls -sl`;\nfor($i in $attrManInputSelection)\n{\nsetAttr ($i + \".rotate\") ($attrManRotate.x) ($attrManRotate.y) ($attrManRotate.z);\n}" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "E" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem41;
+
+        menuItem
+            -label "Copy Scale" 
+            -divider 0
+            -subMenu 0
+            -command "string $attrManInputSelection[]=`ls -sl`;\nfor($i in $attrManInputSelection)\n{\nsetAttr ($i + \".scale\") ($attrManScale.x) ($attrManScale.y) ($attrManScale.z);\n}" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "SE" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem42;
+
+    setParent -m ..;
+
+    menuItem
+        -label "Mirror / Duplicate" 
+        -divider 0
+        -subMenu 1
+        -tearOff 0
+        -enable 1
+        -data 0
+        -radialPosition "S" 
+        -allowOptionBoxes 1
+        -postMenuCommandOnce 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem47;
+
+        menuItem
+            -label "Poly Mirror" 
+            -divider 0
+            -subMenu 0
+            -command "MirrorPolygonGeometry;" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "N" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem55;
+
+        menuItem
+            -label "Duplicate X" 
+            -divider 0
+            -subMenu 0
+            -command "string $mirrorSelection[]=`ls -sl`;\nif(`size($mirrorSelection)`>=1)\n{\nDuplicate;\nstring $mirrorGroup[]=`Group`;\nsetAttr ($mirrorGroup[0] + \".scaleX\") -1;\nUngroup;\n}\nelse\n{\nerror \"Select Item\";\n}" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "NE" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem51;
+
+        menuItem
+            -label "Duplicate Y" 
+            -divider 0
+            -subMenu 0
+            -command "string $mirrorSelection[]=`ls -sl`;\nif(`size($mirrorSelection)`>=1)\n{\nDuplicate;\nstring $mirrorGroup[]=`Group`;\nsetAttr ($mirrorGroup[0] + \".scaleY\") -1;\nUngroup;\n}\nelse\n{\nwarning \"Select Item\";\n}" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "E" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem52;
+
+        menuItem
+            -label "Duplicate Z" 
+            -divider 0
+            -subMenu 0
+            -command "string $mirrorSelection[]=`ls -sl`;\nif(`size($mirrorSelection)`>=1)\n{\nDuplicate;\nstring $mirrorGroup[]=`Group`;\nsetAttr ($mirrorGroup[0] + \".scaleZ\") -1;\nUngroup;\n}\nelse\n{\nwarning \"Select Item\";\n}" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "SE" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem53;
+
+        menuItem
+            -label "Instance" 
+            -divider 0
+            -subMenu 0
+            -command "string $selectPolyDuplicate[]=`ls -sl`;\nfloat $getScalePolyDuplicate=`getAttr ($selectPolyDuplicate[0] + \".scaleX\")`;\nstring $polyDuplicateDest[]=`polyDuplicateAndConnect`;\nsetAttr ($polyDuplicateDest[0] + \".scaleX\") (- $getScalePolyDuplicate);" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "S" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem54;
+
+        menuItem
+            -label "Mirror Z" 
+            -divider 0
+            -subMenu 0
+            -command "string $mirrorSelection[]=`ls -sl`;\nif(`size($mirrorSelection)`>=1)\n{\nstring $mirrorGroup[]=`Group`;\nsetAttr ($mirrorGroup[0] + \".scaleZ\") -1;\nUngroup;\n}\nelse\n{\nerror \"Select Item\";\n}" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "SW" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem50;
+
+        menuItem
+            -label "Mirror Y" 
+            -divider 0
+            -subMenu 0
+            -command "string $mirrorSelection[]=`ls -sl`;\nif(`size($mirrorSelection)`>=1)\n{\nstring $mirrorGroup[]=`Group`;\nsetAttr ($mirrorGroup[0] + \".scaleY\") -1;\nUngroup;\n}\nelse\n{\nerror \"Select Item\";\n}" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "W" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem49;
+
+        menuItem
+            -label "Mirror X" 
+            -divider 0
+            -subMenu 0
+            -command "string $mirrorSelection[]=`ls -sl`;\nif(`size($mirrorSelection)`>=1)\n{\nstring $mirrorGroup[]=`Group`;\nsetAttr ($mirrorGroup[0] + \".scaleX\") -1;\nUngroup;\n}\nelse\n{\nerror \"Select Item\";\n}" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "NW" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem48;
+
+    setParent -m ..;
+
+    menuItem
+        -label "unlockTransform" 
+        -divider 0
+        -subMenu 0
+        -command "string $sels[]=`ls -sl`;\nfor ($i in $sels)\n{\n\tCBunlockAttr ($i + \".tx\");\n\tCBunlockAttr ($i + \".ty\");\n\tCBunlockAttr ($i + \".tz\");\n\tCBunlockAttr ($i + \".rx\");\n\tCBunlockAttr ($i + \".ry\");\n\tCBunlockAttr ($i + \".rz\");\n\tCBunlockAttr ($i + \".sx\");\n\tCBunlockAttr ($i + \".sy\");\n\tCBunlockAttr ($i + \".sz\");\n}" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -checkBox 1
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "W" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem56;
+
+    menuItem
+        -label "ELFdefaultMenuItem" 
+        -divider 0
+        -subMenu 0
+        -command "sphere;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 1
+        -enable 1
+        -data 0
+        -radialPosition "W" 
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem57;
+
+    menuItem
+        -label "Get Attribute" 
+        -divider 0
+        -subMenu 1
+        -tearOff 0
+        -enable 1
+        -data 0
+        -radialPosition "NW" 
+        -allowOptionBoxes 1
+        -postMenuCommandOnce 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem29;
+
+        menuItem
+            -label "Get All 3" 
+            -divider 0
+            -subMenu 0
+            -command "string $attrManSelection[]=`ls -sl`;\nvector $attrManTranslate=`getAttr ($attrManSelection[0] + \".t\")`;\nvector $attrManRotate=`getAttr ($attrManSelection[0] + \".r\")`;\nvector $attrManScale=`getAttr ($attrManSelection[0] + \".s\")`;" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "N" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem37;
+
+        menuItem
+            -label "Get Keyable" 
+            -divider 0
+            -subMenu 0
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "NE" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem45;
+
+        menuItem
+            -label "Get Orient" 
+            -divider 0
+            -subMenu 0
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "E" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem46;
+
+        menuItem
+            -label "Get Shapes" 
+            -divider 0
+            -subMenu 0
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "S" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem44;
+
+        menuItem
+            -label "Get Scale" 
+            -divider 0
+            -subMenu 0
+            -command "string $attrManSelection[]=`ls -sl`;\nvector $attrManScale=`getAttr ($attrManSelection[0] + \".s\")`;" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "SW" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem34;
+
+        menuItem
+            -label "Get Rotate" 
+            -divider 0
+            -subMenu 0
+            -command "string $attrManSelection[]=`ls -sl`;\nvector $attrManRotate=`getAttr ($attrManSelection[0] + \".r\")`;" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "W" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem33;
+
+        menuItem
+            -label "Get Translate" 
+            -divider 0
+            -subMenu 0
+            -command "string $attrManSelection[]=`ls -sl`;\nvector $attrManTranslate=`getAttr ($attrManSelection[0] + \".t\")`;" 
+            -altModifier 0
+            -optionModifier 0
+            -commandModifier 0
+            -ctrlModifier 0
+            -shiftModifier 0
+            -optionBox 0
+            -enable 1
+            -data 0
+            -radialPosition "NW" 
+            -enableCommandRepeat 1
+            -image "commandButton.xpm" 
+            -echoCommand 0
+            -italicized 0
+            -boldFont 1
+            menuEditorMenuItem30;
+
+    setParent -m ..;
+
+setParent -m ..;
+

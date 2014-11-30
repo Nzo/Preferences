@@ -1,0 +1,753 @@
+
+global proc bsSplitter()
+{
+window -title "Blendshapes Splitter"
+	-titleBar true
+	-minimizeButton true
+	-maximizeButton false
+	-sizeable true
+	-widthHeight 500 700
+	bsSplitter;
+
+	columnLayout   -rs 10 -adjustableColumn true;
+		frameLayout -labelVisible false -marginWidth 10 -marginHeight 5 frameLayoutA;
+			columnLayout -rs 5 -adjustableColumn true;
+			textFieldButtonGrp -l " Blendshapes Model" -bl "    Select    " -ed false -cw3 130 170 100  -cal 1 left
+			    -bc "updateBlendshapeModel()" sourceBlendshape; 
+			separator;
+			textFieldButtonGrp -l " Upper Target" -bl "    Select    " -ed false -cw3 130 170 100  -cal 1 left
+			    -bc "updateUpperTarget()" sourceUpper; 
+			separator;
+			textFieldButtonGrp -l " Lower Target" -bl "    Select    " -ed false -cw3 130 170 100  -cal 1 left
+			    -bc "updateLowerTarget()" sourceLower; 
+			
+				setParent..;
+			setParent..;	
+		setParent..;	
+				
+			separator;
+	
+				optionMenuGrp -label "Shapes"  shapesDestOption;
+					menuItem -l "Update existing shapes";
+					menuItem -l "Create new shapes";
+					setParent ..;
+				setParent ..;
+			setParent ..;
+		setParent ..;
+		
+		separator;
+	
+			rowLayout -numberOfColumns 2
+			-columnAlign2 "center" "center"
+			-columnAttach2 "both" "both" 
+			-columnWidth2 205 205 
+			-columnOffset2 0 0; 
+			button 
+			-l "Apply"
+			-c bsSplitterProcess;
+			button 
+			-l "Close"
+			-c ("window -e -vis 0 " + "bsSplitter");		 
+			showWindow bsSplitter;
+}
+	
+
+global proc bsSplitterProcess(){
+	string $blendshape;
+	string $blendshapeModel=`textFieldButtonGrp -q -tx sourceBlendshape`;
+	string $upperModel=`textFieldButtonGrp -q -tx sourceUpper`;
+	string $lowerModel=`textFieldButtonGrp -q -tx sourceLower`;
+	string $optionDest=`optionMenuGrp -q -v shapesDestOption`;
+	string $upperModelShape[]=`ls -dag -s -ni $upperModel`;
+	string $lowerModelShape[]=`ls -dag -s -ni $lowerModel`;
+	select -cl;
+
+	if(`objectType $blendshapeModel` == "transform")
+	{
+		string $meshShape[]=`ls -dag -s -ni $blendshapeModel`;
+		string $lsBlendshape[]=`listConnections -d 1 -t blendShape $meshShape`;
+		$blendshape=$lsBlendshape[0];
+
+	}
+	else if(`objectType $blendshapeModel` == "blendShape")
+	{
+		$blendshape = $blendshapeModel;
+	}
+	else
+	{
+		warning "Select the blendshape";		
+	}	
+	
+	if(`objectType $blendshape`=="blendShape")
+	{	
+		string $targetList[] = rig_getBlendshapeNames($blendshape);
+		//########## Blendshape to 0 ############
+		for ($tg in $targetList)
+		{
+			setAttr ($blendshape + "." + $tg) 0;	
+		}
+		for ($tg in $targetList)
+		{
+
+//############## L E F T  S I D E ###################
+			if($tg=="lBlinkUpper_lBlinkLower")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "lBlinkUpper"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "lBlinkUpper";
+						DeleteHistory;
+						 
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "lBlinkUpper";
+					}
+					
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "lBlinkLower"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "lBlinkLower";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "lBlinkLower";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+			if($tg=="lBlinkUpper_lBlinkLower_ib")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "lBlinkUpper_ib"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "lBlinkUpper_ib";
+						DeleteHistory;
+						 
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "lBlinkUpper_ib";
+					}
+					
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "lBlinkLower_ib"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "lBlinkLower_ib";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "lBlinkLower_ib";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+			if($tg=="lSquint")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "lSquintUpper"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "lSquintUpper";
+						DeleteHistory;
+						 
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "lSquintUpper";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "lSquintLower"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "lSquintLower";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "lSquintLower";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+			if($tg=="lCrushUpper_lCrushLower")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "lCrushUpper"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "lCrushUpper";
+						DeleteHistory;
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "lCrushUpper";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "lCrushLower"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "lCrushLower";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "lCrushLower";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+			if($tg=="lBlinkUpper_lBlinkLower_lSquint")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "lBlinkUpper_lSquint"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "lBlinkUpper_lSquint";
+						DeleteHistory;
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "lBlinkUpper_lSquint";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "lBlinkLower_lSquint"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "lBlinkLower_lSquint";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "lBlinkLower_lSquint";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+			if($tg=="lBlinkLower_lBlinkUpper_lCrushUpper_lCrushLower")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "lBlinkUpper_lCrushUpper"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "lBlinkUpper_lCrushUpper";
+						DeleteHistory;
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "lBlinkUpper_lCrushUpper";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "lBlinkLower_lCrushLower"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "lBlinkLower_lCrushLower";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "lBlinkLower_lCrushLower";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+			if($tg=="lSquint_lCrushUpper_lCrushLower")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "lSquint_lCrushUpper"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "lSquint_lCrushUpper";
+						DeleteHistory;
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "lSquint_lCrushUpper";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "lSquint_lCrushLower"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "lSquint_lCrushLower";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "lSquint_lCrushLower";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+
+			if($tg=="lBlinkUpper_lSquint_lCrushLower_lCrushUpper")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "lBlinkUpper_lSquint_lCrushUpper"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "lBlinkUpper_lSquint_lCrushUpper";
+						DeleteHistory;
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "lBlinkUpper_lSquint_lCrushUpper";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "lBlinkUpper_lSquint_lCrushLower"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "lBlinkUpper_lSquint_lCrushLower";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "lBlinkUpper_lSquint_lCrushLower";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+//#################### R I G H T  S I D E #######################
+
+			if($tg=="rBlinkUpper_rBlinkLower")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "rBlinkUpper"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "rBlinkUpper";
+						DeleteHistory;
+						 
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "rBlinkUpper";
+					}
+					
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "rBlinkLower"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "rBlinkLower";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "rBlinkLower";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+			if($tg=="rBlinkUpper_rBlinkLower_ib")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "rBlinkUpper_ib"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "rBlinkUpper_ib";
+						DeleteHistory;
+						 
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "rBlinkUpper_ib";
+					}
+					
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "rBlinkLower_ib"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "rBlinkLower_ib";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "rBlinkLower_ib";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+			if($tg=="rSquint")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "rSquintUpper"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "rSquintUpper";
+						DeleteHistory;
+						 
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "rSquintUpper";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "rSquintLower"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "rSquintLower";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "rSquintLower";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+			if($tg=="rCrushUpper_rCrushLower")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "rCrushUpper"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "rCrushUpper";
+						DeleteHistory;
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "rCrushUpper";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "rCrushLower"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "rCrushLower";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "rCrushLower";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+			if($tg=="rBlinkUpper_rBlinkLower_rSquint")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "rBlinkUpper_rSquint"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "rBlinkUpper_rSquint";
+						DeleteHistory;
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "rBlinkUpper_rSquint";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "rBlinkLower_rSquint"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "rBlinkLower_rSquint";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "rBlinkLower_rSquint";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+			if($tg=="rBlinkLower_rBlinkUpper_rCrushUpper_rCrushLower")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "rBlinkUpper_rCrushUpper"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "rBlinkUpper_rCrushUpper";
+						DeleteHistory;
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "rBlinkUpper_rCrushUpper";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "rBlinkLower_rCrushLower"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "rBlinkLower_rCrushLower";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "rBlinkLower_rCrushLower";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+			if($tg=="rSquint_rCrushUpper_rCrushLower")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "rSquint_rCrushUpper"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "rSquint_rCrushUpper";
+						DeleteHistory;
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "rSquint_rCrushUpper";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "rSquint_rCrushLower"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "rSquint_rCrushLower";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "rSquint_rCrushLower";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+
+			if($tg=="rBlinkUpper_rSquint_rCrushLower_rCrushUpper")
+			{
+				if($upperModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $upperModel "rBlinkUpper_rSquint_rCrushUpper"`;
+						setAttr ($createBS[0] + "." + $upperModel) 1;
+						select -r "rBlinkUpper_rSquint_rCrushUpper";
+						DeleteHistory;
+					}
+					else
+					{
+						string $upperTmp[]=`duplicate -rr $upperModel`;
+						rename $upperTmp[0] "rBlinkUpper_rSquint_rCrushUpper";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+					
+				}
+		
+				if($lowerModel!="")
+				{
+					setAttr ($blendshape + "." + $tg) 1;
+					if($optionDest=="Update existing shapes")
+					{
+						string $createBS[]=`blendShape -tc 0 $lowerModel "rBlinkUpper_rSquint_rCrushLower"`;
+						setAttr ($createBS[0] + "." + $lowerModel) 1;
+						select -r "rBlinkUpper_rSquint_rCrushLower";
+						DeleteHistory;
+					}
+					else
+					{
+						string $lowerTmp[]=`duplicate -rr $lowerModel`;
+						rename $lowerTmp[0] "rBlinkUpper_rSquint_rCrushLower";
+					}
+					setAttr ($blendshape + "." + $tg) 0;
+				}
+			}
+		}
+	}
+}
+
+
+global proc updateBlendshapeModel()
+{
+	string $newName[]=`ls -sl`;
+	textFieldButtonGrp -e -tx ($newName[0]) sourceBlendshape;
+	select -cl;
+}
+
+
+global proc updateUpperTarget()
+{
+	string $newName[]=`filterExpand -sm 12`;
+	textFieldButtonGrp -e -tx ($newName[0]) sourceUpper;
+	select -cl;
+}
+	
+
+global proc updateLowerTarget()
+{
+	string $newName[]=`filterExpand -sm 12`;
+	textFieldButtonGrp -e -tx ($newName[0]) sourceLower;
+	select -cl;
+}

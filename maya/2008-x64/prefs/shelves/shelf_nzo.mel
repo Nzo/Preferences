@@ -1,0 +1,71 @@
+global proc shelf_nzo () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "MD" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "wndIcon.xpm" 
+        -image1 "wndIcon.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "int $layerVis=`getAttr \"MD.visibility\"`;\nif ($layerVis==1)\n\tsetAttr \"MD.visibility\" 0;\nelse\n\tsetAttr \"MD.visibility\" 1;\t\n" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "ZB" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "wndIcon.xpm" 
+        -image1 "wndIcon.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "int $layerVis=`getAttr \"ZB.visibility\"`;\nif ($layerVis==1)\n\tsetAttr \"ZB.visibility\" 0;\nelse\n\tsetAttr \"ZB.visibility\" 1;\t\n" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "rigAnim" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "commandButton.xpm" 
+        -image1 "commandButton.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rig_libraryProcedureSearchUI_run_cb;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+
+} 

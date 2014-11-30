@@ -1,0 +1,12 @@
+//Maya Preference 8.50 (Release 1)
+//
+//
+evalDeferred("autoLoadPlugin(\"\", \"objExport\", \"objExport\")");
+evalDeferred("autoLoadPlugin(\"\", \"fbxmaya\", \"fbxmaya\")");
+evalDeferred("autoLoadPlugin(\"\", \"ik2Bsolver\", \"ik2Bsolver\")");
+evalDeferred("autoLoadPlugin(\"\", \"ikSpringSolver\", \"ikSpringSolver\")");
+evalDeferred("autoLoadPlugin(\"\", \"Mayatomr\", \"Mayatomr\")");
+evalDeferred("autoLoadPlugin(\"\", \"Iges\", \"Iges\")");
+evalDeferred("autoLoadPlugin(\"\", \"Fur\", \"Fur\")");
+evalDeferred("autoLoadPlugin(\"\", \"rotateHelper\", \"rotateHelper\")");
+evalDeferred("autoLoadPlugin(\"\", \"MayaMuscle\", \"MayaMuscle\")");

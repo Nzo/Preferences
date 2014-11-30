@@ -1,0 +1,1003 @@
+global proc shelf_rigging () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "hubLoad();hubStart();" 
+        -align "center" 
+        -label "hubLoad();hubStart();" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "hub" 
+        -image "hsUpDownStreamCon.xpm" 
+        -image1 "hsUpDownStreamCon.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "hubStart();" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "print \"To the left, system stuff. To the right, utilities to do ..." 
+        -align "center" 
+        -label "print \"To the left, system stuff. To the right, utilities to do ..." 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "openBar.xpm" 
+        -image1 "openBar.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "print \"To the left, system stuff. To the right, utilities to do rig stuff.\";" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "sourceLibrary" 
+        -align "center" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "source" 
+        -image "autoload.xpm" 
+        -image1 "autoload.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "vcUnloadModule(\"riggingTools\", `getenv RIGGINGTOOLS_VERSION`); vcLoadModule(\"riggingTools\",`getenv RIGGINGTOOLS_VERSION`);" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Library UI" 
+        -align "center" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "library" 
+        -image "animPrefsWndIcon.xpm" 
+        -image1 "animPrefsWndIcon.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rig_libraryUI_win;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Rename Objects" 
+        -align "center" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "name" 
+        -image "out_annotationShape.xpm" 
+        -image1 "out_annotationShape.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rigRename;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "ToolBox" 
+        -align "center" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "tools" 
+        -image "animPrefsWndIcon.xpm" 
+        -image1 "animPrefsWndIcon.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rigToolBox;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "SkinTools" 
+        -align "center" 
+        -label "SkinTools" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "skins" 
+        -image "animPrefsWndIcon.xpm" 
+        -image1 "animPrefsWndIcon.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "skinTools;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "MuscleTools" 
+        -align "center" 
+        -label "MuscleTools" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "muscles" 
+        -image "animPrefsWndIcon.xpm" 
+        -image1 "animPrefsWndIcon.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rig_muscleTools;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "connectAttrs" 
+        -align "center" 
+        -label "connectAttrs" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "connect" 
+        -image "hsNextGraph.xpm" 
+        -image1 "hsNextGraph.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "connectAttrs;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "channels" 
+        -align "center" 
+        -label "channels" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "channels" 
+        -image "channels.xpm" 
+        -image1 "channels.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "channels;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "tabOutliner" 
+        -align "center" 
+        -label "tabOutliner" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "Out" 
+        -image "frameGraph.xpm" 
+        -image1 "frameGraph.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "tabOutliner;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Select connected" 
+        -align "center" 
+        -label "Select connected" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "selectX" 
+        -image "pickHierarchy.xpm" 
+        -image1 "pickHierarchy.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "selectConnected;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Reorder Attributes" 
+        -align "center" 
+        -label "Reorder Attributes" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "reorder" 
+        -image "channels.xpm" 
+        -image1 "channels.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "reorderAttrs;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Take Attributes" 
+        -align "center" 
+        -label "Take Attributes" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "take" 
+        -image "channels.xpm" 
+        -image1 "channels.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "takeAttrs;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "print \"Why, i'm just a seperator!\\n\";" 
+        -align "center" 
+        -label "print \"Why, i'm just a seperator!\\n\";" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "openBar.xpm" 
+        -image1 "openBar.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "print \"To the left, utilities to build rigs. To the right, utilities to edit built rigs.\"; " 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "checkElement" 
+        -align "center" 
+        -label "checkElement" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "check" 
+        -image "mi-check.xpm" 
+        -image1 "mi-check.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "checkElement;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "validityCheck" 
+        -align "center" 
+        -label "validityCheck" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "valid" 
+        -image "hypershadeBinMaster.xpm" 
+        -image1 "hypershadeBinMaster.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "hubCharacter_checkValidityWin;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "print \"Why, i'm just a seperator!\\n\";" 
+        -align "center" 
+        -label "print \"Why, i'm just a seperator!\\n\";" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "openBar.xpm" 
+        -image1 "openBar.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "print \"To the left, utilities to build rigs. To the right, utilities to edit built rigs.\"; " 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "deleteFast" 
+        -align "center" 
+        -label "deleteFast" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "delete" 
+        -image "mi-cross.xpm" 
+        -image1 "mi-cross.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "deleteFast;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "print \"Why, i'm just a seperator!\\n\";" 
+        -align "center" 
+        -label "print \"Why, i'm just a seperator!\\n\";" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "openBar.xpm" 
+        -image1 "openBar.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "print \"To the left, utilities to build rigs. To the right, utilities to edit built rigs.\"; " 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "move" 
+        -align "center" 
+        -label "move" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "move" 
+        -image "channelBoxHyperbolicOff.xpm" 
+        -image1 "channelBoxHyperbolicOff.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rig_moveTo(rig_getElem(`ls -sl`,0),rig_getElem(`ls -sl`,1));select(\"-r\",rig_getElem(`ls -sl`,0));" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "rotTo" 
+        -align "center" 
+        -label "rotTo" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "rot" 
+        -image "reload.xpm" 
+        -image1 "reload.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rig_rotateTo(rig_getElem(`ls -sl`,0),rig_getElem(`ls -sl`,1));select(\"-r\",rig_getElem(`ls -sl`,0));" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "transTo" 
+        -align "center" 
+        -label "transTo" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "trans" 
+        -image "ffdPointIcon.xpm" 
+        -image1 "ffdPointIcon.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rig_translateTo(rig_getElem(`ls -sl`,0),rig_getElem(`ls -sl`,1));select(\"-r\",rig_getElem(`ls -sl`,0));" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "curveTo" 
+        -align "center" 
+        -label "curveTo" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "curve" 
+        -image "out_radiusDimension.xpm" 
+        -image1 "out_radiusDimension.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "{string $all[] = rig_selected();rig_curveMoveTo($all[0],$all[1]);select -r $all[1];}" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "print \"Why, i'm just a seperator!\\n\";" 
+        -align "center" 
+        -label "print \"Why, i'm just a seperator!\\n\";" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "openBar.xpm" 
+        -image1 "openBar.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "print \"To the left, utilities to build rigs. To the right, utilities to edit built rigs.\"; " 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Rig Connect" 
+        -align "center" 
+        -label "Rig Connect" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "TAG" 
+        -image "ghostOff.xpm" 
+        -image1 "ghostOff.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rigTag;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Rig Editor" 
+        -align "center" 
+        -label "Rig Editor" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "EDIT" 
+        -image "ghostOff.xpm" 
+        -image1 "ghostOff.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rigEditor;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Rig Manager" 
+        -align "center" 
+        -label "Rig Manager" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "MANAGE" 
+        -image "ghost.xpm" 
+        -image1 "ghost.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rigManager;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Rig Bake" 
+        -align "center" 
+        -label "Rig Bake" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "BAKE" 
+        -image "ghostOff.xpm" 
+        -image1 "ghostOff.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rigBakeUI;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "print \"To the right is common Maya stuff\";" 
+        -align "center" 
+        -label "print \"To the right is common Maya stuff\";" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "openBar.xpm" 
+        -image1 "openBar.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "print \"To the right is common Maya stuff\";" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "IK Joint Tool" 
+        -align "center" 
+        -label "IK Joint Tool" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "kinJoint.xpm" 
+        -image1 "kinJoint.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "JointTool" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    $gBuffStr = `toolButton -style iconAndTextHorizontal -doubleClickCommand "toolPropertyWindow" -cl toolCluster `;
+    $gBuffStr1 = `    artAttrCtx
+        -image1 "paintSkinWeights.xpm" 
+        -image2 "vacantCell.xpm" 
+        -image3 "vacantCell.xpm" 
+        -tangentOutline 1
+        -surfaceConformedBrushVertices 0
+        -record 0
+        -importreassign 0
+        -selectclonesource 0
+        -preserveclonesource 1
+        -dynclonemode 1
+        -pickColor 0
+        -expandfilename 0
+        -usepressure 0
+        -reflectionaboutorigin 0
+        -reflection 0
+        -projective 0
+        -showactive 1
+        -brushfeedback 1
+        -outwhilepaint 0
+        -outline 1
+        -accopacity 0
+        -brushalignment 1
+        -exportaspectratio 1
+        -stampDepth 0.5
+        -stampSpacing 0.1
+        -screenRadius 1
+        -worldRadius 0.02
+        -lowerradius 0.00102
+        -opacity 1
+        -reflectionaxis "x" 
+        -exportfiletype "JPEG" 
+        -exportfilemode "luminance" 
+        -importfilemode "luminance" 
+        -strokesmooth "spline" 
+        -mappressure "Opacity" 
+        -paintmode "tangent" 
+        -paintoperationtype "Paint" 
+        -dragSlider "none" 
+        -radius 0.02
+        -stampProfile "solid" 
+        -exportfilesizex 1028
+        -exportfilesizey 1028
+        -whichTool "skinWeights" 
+        -selectedattroper "smooth" 
+        -value 1
+        -minvalue 0
+        -maxvalue 1
+        -clamplower 0
+        -clampupper 1
+        -clamp "none" 
+        -dataTypeIndex 1
+        -colorfeedback 1
+        -colorfeedbackOverride 0
+        -disablelighting 1
+        -colorrangelower 0
+        -colorrangeupper 1
+        -interactiveUpdate 1
+        -colorAlphaValue 1 
+`;
+    toolButton -edit -tool $gBuffStr1 -toolImage1 $gBuffStr1 "paintSkinWeights.xpm" $gBuffStr;
+    toolButton -edit -tool $gBuffStr1 $gBuffStr;
+
+    $gBuffStr = `toolButton -style iconAndTextHorizontal -doubleClickCommand "toolPropertyWindow" -cl toolCluster `;
+    $gBuffStr1 = `    ikHandleCtx
+        -image1 "kinHandle.xpm" 
+        -image2 "vacantCell.xpm" 
+        -image3 "vacantCell.xpm" 
+        -solverTypeH "ikRPsolver" 
+        -priorityH 1
+        -weightH 1
+        -poWeightH 1
+        -autoPriorityH 0
+        -snapHandleH 0
+        -forceSolverH 1
+        -stickyH "sticky" 
+        -createCurve 1
+        -simplifyCurve 1
+        -rootOnCurve 1
+        -twistType "linear" 
+        -createRootAxis 0
+        -parentCurve 1
+        -snapCurve 0
+        -numSpans 1
+        -rootTwistMode 0
+`;
+    toolButton -edit -tool $gBuffStr1 -toolImage1 $gBuffStr1 "kinHandle.xpm" $gBuffStr;
+    toolButton -edit -tool $gBuffStr1 $gBuffStr;
+
+    $gBuffStr = `toolButton -style iconAndTextHorizontal -doubleClickCommand "toolPropertyWindow" -cl toolCluster `;
+    $gBuffStr1 = `    ikSplineHandleCtx
+        -image1 "kinSplineHandle.xpm" 
+        -image2 "vacantCell.xpm" 
+        -image3 "vacantCell.xpm" 
+        -solverTypeH "ikSplineSolver" 
+        -priorityH 1
+        -weightH 1
+        -poWeightH 1
+        -autoPriorityH 0
+        -snapHandleH 1
+        -forceSolverH 1
+        -stickyH "off" 
+        -createCurve 0
+        -simplifyCurve 1
+        -rootOnCurve 1
+        -twistType "linear" 
+        -createRootAxis 0
+        -parentCurve 0
+        -snapCurve 0
+        -numSpans 2
+        -rootTwistMode 0
+`;
+    toolButton -edit -tool $gBuffStr1 -toolImage1 $gBuffStr1 "kinSplineHandle.xpm" $gBuffStr;
+    toolButton -edit -tool $gBuffStr1 $gBuffStr;
+
+    $gBuffStr = `toolButton -style iconAndTextHorizontal -doubleClickCommand "toolPropertyWindow" -cl toolCluster `;
+    $gBuffStr1 = `    artAttrCtx
+        -image1 "attrPaint.xpm" 
+        -image2 "vacantCell.xpm" 
+        -image3 "vacantCell.xpm" 
+        -tangentOutline 1
+        -surfaceConformedBrushVertices 0
+        -record 0
+        -importreassign 0
+        -selectclonesource 0
+        -preserveclonesource 1
+        -dynclonemode 1
+        -pickColor 0
+        -expandfilename 0
+        -usepressure 1
+        -reflectionaboutorigin 0
+        -reflection 0
+        -projective 0
+        -showactive 1
+        -brushfeedback 1
+        -outwhilepaint 0
+        -outline 1
+        -accopacity 0
+        -brushalignment 1
+        -exportaspectratio 1
+        -stampDepth 0.5
+        -stampSpacing 0.1
+        -screenRadius 1
+        -worldRadius 1
+        -lowerradius 0.001
+        -opacity 1
+        -reflectionaxis "x" 
+        -exportfiletype "IFF" 
+        -exportfilemode "luminance" 
+        -importfilemode "luminance" 
+        -strokesmooth "spline" 
+        -mappressure "Opacity" 
+        -paintmode "tangent" 
+        -paintoperationtype "Paint" 
+        -dragSlider "none" 
+        -radius 1
+        -stampProfile "poly" 
+        -exportfilesizex 256
+        -exportfilesizey 256
+        -whichTool "general" 
+        -selectedattroper "absolute" 
+        -value 1
+        -minvalue 0
+        -maxvalue 1
+        -clamplower 0
+        -clampupper 1
+        -clamp "none" 
+        -dataTypeIndex 1
+        -colorfeedback 1
+        -colorfeedbackOverride 0
+        -disablelighting 1
+        -colorrangelower 0
+        -colorrangeupper 1
+        -interactiveUpdate 1
+        -colorAlphaValue 1 
+`;
+    toolButton -edit -tool $gBuffStr1 -toolImage1 $gBuffStr1 "attrPaint.xpm" $gBuffStr;
+    toolButton -edit -tool $gBuffStr1 $gBuffStr;
+
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "print \"To the right is humanProject Stuff\";" 
+        -align "center" 
+        -label "print \"To the right is humanProject Stuff\";" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "openBar.xpm" 
+        -image1 "openBar.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "print \"To the right is humanProject Stuff\";" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "humanProject" 
+        -align "center" 
+        -label "humanProject" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "HP" 
+        -image "ghostOff.xpm" 
+        -image1 "ghostOff.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rig_humanProjectWin" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Character Pipe" 
+        -align "center" 
+        -label "Character Pipe" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "HCPipe" 
+        -image "ghostOff.xpm" 
+        -image1 "ghostOff.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rig_humanCharacterPipeWin;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "print \"To the right is sets Stuff\";" 
+        -align "center" 
+        -label "print \"To the right is sets Stuff\";" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "openBar.xpm" 
+        -image1 "openBar.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "print \"To the right is sets Stuff\";" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "removeSelectedFromSet" 
+        -align "center" 
+        -label "removeSelectedFromSet" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "remove" 
+        -image "out_objectSet.xpm" 
+        -image1 "out_objectSet.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "rig_setsRemoveSelected();" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+
+} 

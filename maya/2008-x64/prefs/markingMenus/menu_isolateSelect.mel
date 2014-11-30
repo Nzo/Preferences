@@ -1,0 +1,45 @@
+
+    menuItem
+        -label "Restore" 
+        -divider 0
+        -subMenu 0
+        -command "enableIsolateSelect $currentPanel false;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "E" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem2;
+
+    menuItem
+        -label "Isolate" 
+        -divider 0
+        -subMenu 0
+        -command "enableIsolateSelect $currentPanel true;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "W" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem1;
+
+setParent -m ..;
+

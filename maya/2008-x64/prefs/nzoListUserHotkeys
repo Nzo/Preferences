@@ -1,0 +1,187 @@
+Hotkey                           Category                 Command
+==========================================================================================
+         a         Press          Tools                    SelectTool
+Ctrl     a         Press          Miscellaneous            ShowAttributeEditorOrChannelBox
+     Alt a         Press          Status Line              SelectToggleMode
+         b         Press          Brush Tools              ModifyUpperRadiusPress
+         b         Release        Brush Tools              ModifyUpperRadiusPress
+Ctrl     b         Press          Paint Effects            TemplateBrushSettings
+     Alt b         Press          Display                  CycleBackgroundColor
+         c         Press          Tools                    ScaleToolWithSnapMarkingMenu
+         c         Release        Tools                    ScaleToolWithSnapMarkingMenu
+Ctrl     c         Press          Edit                     CopySelected
+     Alt c         Press          Status Line              SelectFacetMask
+         d         Press          User                     Toggle_shaded
+Ctrl     d         Press          Edit                     Duplicate
+     Alt d         Press          Animate                  SetFullBodyIKKeysAll
+         e         Press          User Marking Menus       attributeMan_Press
+         e         Release        User Marking Menus       attributeMan_Press
+     Alt e         Press          Skeleton                 ToggleFBIKEffectorsRotatePinState
+         f         Press          User                     frameSelectedView
+Ctrl     f         Press          Animate                  SetFullBodyIKKeys
+     Alt f         Press                                   FillHoleNameCommand
+         g         Press          Edit                     RepeatLast
+Ctrl     g         Press          Edit                     Group
+     Alt g         Press          Display                  ToggleGrid
+         h         Press          Edit                     DeleteHistory
+Ctrl     h         Press          Display                  HideSelectedObjects
+     Alt h         Press          Display                  HideUnselectedObjects
+         i         Press          Display                  HideSelectedObjects
+Ctrl     i         Press          File                     Import
+         j         Press          User Marking Menus       WindowJKey_Press
+         j         Release        User Marking Menus       WindowJKey_Press
+     Alt j         Press          Artisan                  ToggleMultiColorFeedback
+         k         Press          User Marking Menus       WindowKKey_Press
+         k         Release        User Marking Menus       WindowKKey_Press
+         l         Press                                   ControlPaneVisibility_02_PressNameCommand
+         l         Release                                 ControlPaneVisibility_02_PressNameCommand
+         m         Press          Brush Tools              ModifyDisplacementPress
+         m         Release        Brush Tools              ModifyDisplacementPress
+Ctrl     m         Press          Miscellaneous            ToggleMainMenubar
+     Alt m         Press          Miscellaneous            FullHotboxDisplay
+         n         Press          Artisan                  ModifyPaintValuePress
+         n         Release        Artisan                  ModifyPaintValuePress
+Ctrl     n         Press          File                     NewScene
+         o         Press          Window                   OutlinerWindow
+Ctrl     o         Press          File                     OpenScene
+         p         Press          Edit                     Parent
+         q         Press          User Marking Menus       Smooth_Menu_Press
+         q         Release        User Marking Menus       Smooth_Menu_Press
+Ctrl     q         Press          File                     Quit
+     Alt q         Press          Edit                     Delete
+         r         Press          Edit Mesh                CutPolygon
+Ctrl     r         Press          File                     CreateReference
+         s         Press          Animate                  SetKey
+Ctrl     s         Press          File                     SaveScene
+     Alt s         Press          Edit Mesh                SplitPolygonTool
+         t         Press                                   tklUIMarkingMenuShowCommand
+         t         Release                                 tklUIMarkingMenuShowCommand
+Ctrl     t         Press          Modify                   UniversalManip
+     Alt t         Press          Window                   HypergraphDecreaseDepth
+         u         Press          Display                  ShowSelectedObjects
+         v         Press          User Marking Menus       builderMenu_Press
+         v         Release        User Marking Menus       builderMenu_Press
+Ctrl     v         Press          Edit                     PasteSelected
+     Alt v         Press          Playback Controls        PlaybackToggle
+         w         Press          Edit                     Undo
+Ctrl     w         Press          Modify                   SoftModTool
+     Alt w         Press          Edit Mesh                AppendToPolygonTool
+         x         Press          Tools                    RotateToolWithSnapMarkingMenu
+         x         Release        Tools                    RotateToolWithSnapMarkingMenu
+Ctrl     x         Press          Edit                     CutSelected
+     Alt x         Press          Status Line              SelectEdgeMask
+         y         Press          User Marking Menus       PA_Style_MMB_Press
+         y         Release        User Marking Menus       PA_Style_MMB_Press
+         z         Press          Tools                    TranslateToolWithSnapMarkingMenu
+         z         Release        Tools                    TranslateToolWithSnapMarkingMenu
+Ctrl     z         Press          Edit                     Undo
+     Alt z         Press          Status Line              SelectVertexMask
+         A         Press          Window                   FrameAllInAllViews
+         B         Press          Brush Tools              ModifyLowerRadiusPress
+         B         Release        Brush Tools              ModifyLowerRadiusPress
+         C         Press          Status Line              SnapToCurve
+         C         Release        Status Line              SnapToCurve
+         D         Press          Edit                     DuplicateWithTransform
+Ctrl     D         Press          Edit                     DuplicateSpecial
+     Alt D         Press          Edit                     DeleteHistory
+         E         Press          Animate                  SetKeyRotate
+         F         Press          Modeling Panel           FrameSelected
+         G         Press                                   UngroupNameCommand
+         H         Press          Display                  ShowSelectedObjects
+Ctrl     H         Press          Display                  ShowLastHidden
+         I         Press          Edit                     SelectHierarchy
+         J         Press          Modify                   MoveRotateScaleToolToggleSnapRelativeMode
+         J         Release        Modify                   MoveRotateScaleToolToggleSnapRelativeMode
+         K         Press          Display                  ToggleFaceNormalDisplay
+         M         Press          Miscellaneous            TogglePanelMenubar
+         O         Press          Window                   HotkeyPreferencesWindow
+         P         Press          Edit                     Unparent
+         Q         Press          Tools                    SelectComponentToolMarkingMenu
+         Q         Release        Tools                    SelectComponentToolMarkingMenu
+         R         Press          Animate                  SetKeyScale
+         S         Press          User                     Toggle_wireframeOnShaded
+Ctrl     S         Press          File                     SaveSceneAs
+         U         Press          Artisan                  ModifyUVVectorPress
+         U         Release        Artisan                  ModifyUVVectorPress
+         V         Press          Status Line              SnapToPoint
+         V         Release        Status Line              SnapToPoint
+     Alt V         Press          Miscellaneous            GoToMinFrame
+         W         Press          Animate                  SetKeyTranslate
+         X         Press          Status Line              SnapToGrid
+         X         Release        Status Line              SnapToGrid
+         Z         Press          Edit                     Redo
+         0         Press          Miscellaneous            DefaultQualityDisplay
+         1         Press          Miscellaneous            LowQualityDisplay
+Ctrl     1         Press          User                     Look_Selected
+     Alt 1         Press          Animate                  FBIKReachKeyingOptionFK
+         2         Press          Miscellaneous            MediumQualityDisplay
+     Alt 2         Press          Animate                  FBIKReachKeyingOptionSimple
+         3         Press          Miscellaneous            HighQualityDisplay
+     Alt 3         Press          Animate                  FBIKReachKeyingOptionIK
+         4         Press          Modeling Panel           DisplayWireframe
+     Alt 4         Press          Animate                  SetFullBodyIKKeysSelected
+         5         Press          Modeling Panel           DisplayShaded
+     Alt 5         Press          Skeleton                 ToggleFkSkeletonVisibility
+         6         Press          Modeling Panel           DisplayShadedAndTextured
+         7         Press          Modeling Panel           DisplayLight
+         8         Press          Modify                   SoftModTool
+         F1        Press          Help                     Help
+         F2        Press          Application              ShowAnimationUI
+         F3        Press          Application              ShowPolygonsUI
+         F4        Press          Application              ShowModelingUI
+         F5        Press          Application              ShowDynamicsUI
+         F6        Press          Application              ShowRenderingUI
+         F8        Press          Status Line              SelectToggleMode
+         F9        Press          Window                   ScriptEditor
+Ctrl     F9        Press          Polygon Select           ConvertSelectionToVertices
+     Alt F9        Press          Status Line              SelectVertexFaceMask
+         F10       Press          Window                   RenderViewWindow
+Ctrl     F10       Press          Polygon Select           ConvertSelectionToEdges
+         F11       Press          Window                   RenderGlobalsWindow
+Ctrl     F11       Press          Polygon Select           ConvertSelectionToFaces
+         F12       Press          Status Line              SelectUVMask
+Ctrl     F12       Press          Polygon Select           ConvertSelectionToUVs
+         `         Press          Modify                   STRSTweakModeOn
+         `         Release        Modify                   STRSTweakModeOn
+Ctrl     `         Press          Display                  SmoothingDisplayToggle
+     Alt `         Press          Subdiv Surfaces          CreateSubdivSurface
+         -         Press          Manipulator              DecreaseManipulatorSize
+         =         Press          Manipulator              IncreaseManipulatorSize
+         [         Press          Edit                     GoToPreviousView
+         ]         Press          Edit                     GoToNextView
+         ;         Press          User Marking Menus       Snap_Press
+         ;         Release        User Marking Menus       Snap_Press
+         '         Press          User                     headUpNameSelection
+         ,         Press          Playback Controls        PreviousKey
+     Alt ,         Press          Playback Controls        PreviousFrame
+         .         Press          Playback Controls        NextKey
+     Alt .         Press          Playback Controls        NextFrame
+         /         Press          Artisan                  PickColorActivate
+         /         Release        Artisan                  PickColorActivate
+         ~         Press          Display                  SmoothingDisplayShowBoth
+Ctrl     ~         Press          Polygons                 SmoothProxy
+     Alt ~         Press          Subdiv Surfaces          CreateSubdivSurfaceOptions
+         +         Press          Manipulator              IncreaseManipulatorSize
+         {         Press          Window                   PreviousViewArrangement
+         }         Press          Window                   NextViewArrangement
+         <         Press          Polygon Select           ShrinkPolygonSelectionRegion
+         >         Press          Polygon Select           GrowPolygonSelectionRegion
+         Up        Press          Miscellaneous            PickWalkUp
+Ctrl     Up        Press          Subdiv Surfaces          CoarserSubdivLevel
+     Alt Up        Press          Miscellaneous            PixelMoveUp
+         Down      Press          Miscellaneous            PickWalkDown
+Ctrl     Down      Press          Subdiv Surfaces          CreateSubdivRegion
+     Alt Down      Press          Miscellaneous            PixelMoveDown
+         Left      Press          Miscellaneous            PickWalkLeft
+Ctrl     Left      Press          Window                   RenderViewNextImage
+     Alt Left      Press          Miscellaneous            PixelMoveLeft
+         Right     Press          Miscellaneous            PickWalkRight
+Ctrl     Right     Press          Window                   RenderViewPrevImage
+     Alt Right     Press          Miscellaneous            PixelMoveRight
+         Page_Up   Press          Display                  SmoothingLevelIncrease
+         Page_Down Press          Display                  SmoothingLevelDecrease
+         Insert    Press          Tools                    EnterEditMode
+         Return    Press          Tools                    CompleteCurrentTool
+         Space     Press          Hotbox                   ShowHotbox
+         Space     Release        Hotbox                   ShowHotbox
+Ctrl     Space     Press          Display                  ToggleUIElements

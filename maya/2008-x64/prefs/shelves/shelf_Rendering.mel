@@ -1,0 +1,589 @@
+global proc shelf_Rendering () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Ambient Light: Create an ambient light on the grid or live surface" 
+        -align "center" 
+        -label "Ambient Light" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "ambientlight.xpm" 
+        -image1 "ambientlight.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "CreateAmbientLight" 
+        -sourceType "mel" 
+        -doubleClickCommand "CreateAmbientLightOptions" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Directional Light: Create a directional light on the grid or live surface" 
+        -align "center" 
+        -label "Directional Light" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "directionallight.xpm" 
+        -image1 "directionallight.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "CreateDirectionalLight" 
+        -sourceType "mel" 
+        -doubleClickCommand "CreateDirectionalLightOptions" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Point Light: Create a point light on the grid or live surface" 
+        -align "center" 
+        -label "Point Light" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "pointlight.xpm" 
+        -image1 "pointlight.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "CreatePointLight" 
+        -sourceType "mel" 
+        -doubleClickCommand "CreatePointLightOptions" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Spot Light: Create a spot light on the grid or live surface" 
+        -align "center" 
+        -label "Spot Light" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "spotlight.xpm" 
+        -image1 "spotlight.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "CreateSpotLight" 
+        -sourceType "mel" 
+        -doubleClickCommand "CreateSpotLightOptions" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Area Light: Create an area light on the grid or live surface" 
+        -align "center" 
+        -label "Area Light" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "arealight.xpm" 
+        -image1 "arealight.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "CreateAreaLight" 
+        -sourceType "mel" 
+        -doubleClickCommand "CreateAreaLightOptions" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Volume Light: Create a volume light on the grid or live surface" 
+        -align "center" 
+        -label "Volume Light" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "volumelight.xpm" 
+        -image1 "volumelight.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "CreateVolumeLight" 
+        -sourceType "mel" 
+        -doubleClickCommand "CreateVolumeLightOptions" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Camera: Create a camera on the grid" 
+        -align "center" 
+        -label "Create Camera" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "view.xpm" 
+        -image1 "view.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "CreateCameraOnly" 
+        -sourceType "mel" 
+        -doubleClickCommand "CreateCameraOnlyOptions" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Show Shading Group Attribute Editor" 
+        -align "center" 
+        -label "Edit Material Attributes" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "materialEditor.xpm" 
+        -image1 "materialEditor.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "ShowShadingGroupAttributeEditor" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Anisotropic Material: Assign a new Anisotropic material to the active objects" 
+        -align "center" 
+        -label "Anisotropic Material" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "render_anisotropic.xpm" 
+        -image1 "render_anisotropic.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "createAndAssignShader anisotropic \"\"" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Blinn Material: Assign a new Blinn material to the active objects" 
+        -align "center" 
+        -label "Blinn Material" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "render_blinn.xpm" 
+        -image1 "render_blinn.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "createAndAssignShader blinn \"\"" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Lambert Material: Assign a new Lambert material to the active objects" 
+        -align "center" 
+        -label "Lambert Material" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "render_lambert.xpm" 
+        -image1 "render_lambert.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "createAndAssignShader lambert \"\"" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Phong Material: Assign a new Phong material to the active objects" 
+        -align "center" 
+        -label "Phong Material" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "render_phong.xpm" 
+        -image1 "render_phong.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "createAndAssignShader phong \"\"" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Phong E Material: Assign a new Phong E material to the active objects" 
+        -align "center" 
+        -label "Phong E Material" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "render_phongE.xpm" 
+        -image1 "render_phongE.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "createAndAssignShader phongE \"\"" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Layered Material: Assign a new Layered material to the active objects" 
+        -align "center" 
+        -label "Layered Material" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "render_layeredShader.xpm" 
+        -image1 "render_layeredShader.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "createAndAssignShader layeredShader \"\"" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Ramp Material: Assign a new Ramp material to the active objects" 
+        -align "center" 
+        -label "Ramp Material" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "render_rampShader.xpm" 
+        -image1 "render_rampShader.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "createAndAssignShader rampShader \"\"" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Shading Map: Assign a new Shading map to the active objects" 
+        -align "center" 
+        -label "Shading Map" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "render_shadingMap.xpm" 
+        -image1 "render_shadingMap.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "createAndAssignShader shadingMap \"\"" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Surface Material: Assign a new Surface material to the active objects" 
+        -align "center" 
+        -label "Surface Material" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "render_surfaceShader.xpm" 
+        -image1 "render_surfaceShader.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "createAndAssignShader surfaceShader \"\"" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Use Background: Assign a new Use Background material to the active objects" 
+        -align "center" 
+        -label "Use Background" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "render_useBackground.xpm" 
+        -image1 "render_useBackground.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "createAndAssignShader useBackground \"\"" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Render the current frame into a Render View window" 
+        -align "center" 
+        -label "Render Current Frame" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "render.xpm" 
+        -image1 "render.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "RenderIntoNewWindow" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "IPR Render the current frame into a Render View window" 
+        -align "center" 
+        -label "IPR Render Current Frame" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "ipr.xpm" 
+        -image1 "ipr.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "IPRRenderIntoNewWindow" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Render Settings: Change rendering attributes" 
+        -align "center" 
+        -label "Render Settings Window" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "renderGlobals.xpm" 
+        -image1 "renderGlobals.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "unifiedRenderGlobalsWindow" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Show Render Diagnostics in the Script Editor" 
+        -align "center" 
+        -label "Render Diagnostics" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "renderDiagnostics.xpm" 
+        -image1 "renderDiagnostics.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "mayaSoftwareRenderDiagnostics" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Batch Render: Export the current scene to a file and render that file in the background" 
+        -align "center" 
+        -label "Batch Render" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "showBatchRender.xpm" 
+        -image1 "showBatchRender.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "BatchRender" 
+        -sourceType "mel" 
+        -doubleClickCommand "batchRenderWindow" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Cancel Batch Render" 
+        -align "center" 
+        -label "Cancel Batch Render" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "abortBatchRender.xpm" 
+        -image1 "abortBatchRender.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "batchRender" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Show Batch Render: Display the batch render image" 
+        -align "center" 
+        -label "Show Batch Render" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "showBatchRender.xpm" 
+        -image1 "showBatchRender.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "batchRender -showImage true" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "3D Paint Tool: Paint file textures" 
+        -align "center" 
+        -label "3D Paint Tool" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "art3dPaint.xpm" 
+        -image1 "art3dPaint.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "Art3dPaintTool" 
+        -sourceType "mel" 
+        -doubleClickCommand "Art3dPaintToolOptions" 
+        -actionIsSubstitute 0
+    ;
+
+} 

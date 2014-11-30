@@ -1,0 +1,2 @@
+string $driver = rig_stringFirst(`ls "*:standardFacialBlendshapeDriver_LOC"  "*:*:standardFacialBlendshapeDriver_LOC" "standardFacialBlendshapeDriver_LOC"`);
+

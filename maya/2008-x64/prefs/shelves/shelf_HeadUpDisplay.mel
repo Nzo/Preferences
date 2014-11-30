@@ -1,0 +1,157 @@
+global proc shelf_HeadUpDisplay () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "headsUpDisplayVisible" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "commandButton.xpm" 
+        -image1 "commandButton.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "global proc string[] listMySel()\r\n{\r\n\tint\t$nbMyNodes = 0;\r\n\tstring $myList[];\r\n\tclear $myList;\r\n\r\n\t$myList = `ls -sl `;\r\n\r\n\treturn $myList;\r\n}\r\n\r\nheadsUpDisplay -section          5\r\n               -block            2\r\n               -blockSize        \"small\"\r\n               -label            \"NameSelection:\"\r\n               -labelFontSize    \"small\"\r\n               -command          \"listMySel()\"\r\n               -event            \"SelectionChanged\"\r\n               -nodeChanges      \"attributeChange\"\r\n               HUDselectedObj;\r\n" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "headsUpDisplayVisible -rem" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "commandButton.xpm" 
+        -image1 "commandButton.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "headsUpDisplay -rem HUDselectedObj;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "creature" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "commandButton.xpm" 
+        -image1 "commandButton.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "\r\n\r\n\tint\t$nbMyNodes = 0;\r\n\tstring $myLyst[];\r\n\tclear $myLyst;\r\n\r\n\tfor( $obj in `ls -type transform \"|*\"` )\r\n\t{\r\n\t\tif( `attributeQuery -node $obj -exists colossus` )\r\n\t\t{\r\n\t\t\t$myLyst[$nbMyNodes++] = $obj;\r\n\t\t}\r\n\t}\r\n\tstring $NameCreature = $myLyst[0] + \"Creature\";\r\n\tstring $NameCreatureShape = $myLyst[0] + \"CreatureShape\";\r\n\r\n\tjsCreateCreature $NameCreature;\r\n\taddAttr -ln \"jsConnectedObjs\" -at message -multi -im false $NameCreatureShape ;\r\n\r\n\t\tselect -r I_poignetDRCtrl ;\r\n\t\tselect -add I_poignetGACtrl ;\r\n\t\tselect -add I_coudeDRCtrl ;\r\n\t\tselect -add I_coudeGACtrl ;\r\n\t\tselect -add I_genouDRCtrl ;\r\n\t\tselect -add I_genouGACtrl ;\r\n\t\tselect -add I_jambeDRCtrl ;\r\n\t\tselect -add I_jambeGACtrl ;\r\n\t\tselect -add backCtrl_High;\r\n\t\tselect -add backCtrl_Low;\r\n\t\tselect -add backCtrl;\r\n\t\tselect -add fullBody ;\r\n\t\tselect -add $myLyst[0];\r\n\r\n\tint $i;\r\n\tint $o;\r\n\tstring $at;\r\n\t$selectedObjs = `ls -sl`;\r\n\tstring $listAt;\r\n\tfor ($i = 0; $i < size($selectedObjs); $i++) \r\n\t{\r\n\r\n\t\tstring $atselection[] = `listAttr -r -k  $selectedObjs[$i]`;\r\n\t\t\r\n\t\t\tfor ($u = 0; $u < size($atselection); $u++) \r\n\t\t\t{\r\n\t\t\t\t$listAt= ($selectedObjs[$i] + \".\" + $atselection[$u]);\r\n\t\t\t\tconnectAttr -na $listAt ($NameCreatureShape  + \".jsConnectedObjs\");\r\n\t\t\t}\r\n\t}\r\n\r\n\r\n\r\n\r\n" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "maya_messenger" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "commandButton.xpm" 
+        -image1 "commandButton.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "maya_messenger" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "versFilmBox" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "commandButton.xpm" 
+        -image1 "commandButton.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "string $sel[] = `ls -sl`;\r\nAM_renameSkeleton (\"filmbox\", \"FBX\", $sel[0]);" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "versAttitude" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "commandButton.xpm" 
+        -image1 "commandButton.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "string $sel[] = `ls -sl`;\r\nAM_renameSkeleton (\"attitude\", \"SKN\", $sel[0]);\r\n" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 114
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "if(!`pluginInfo -query -loaded \"C:/Documents and Settings/lherveic/Mes documents/maya/5.0/scripts/blueMelStudio_Maya50/blueMelStudio.mll\"`)\r\n\tloadPlugin \"C:/Documents and Settings/lherveic/Mes documents/maya/5.0/scripts/blueMelStudio_Maya50/blueMelStudio.mll\";\r\neval blueMelStudio;" 
+        -align "center" 
+        -label "blueMel" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -imageOverlayLabel "blueMel" 
+        -image "commandButton.xpm" 
+        -image1 "commandButton.xpm" 
+        -style "iconAndTextHorizontal" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "if(!`pluginInfo -query -loaded \"C:/Documents and Settings/lherveic/Mes documents/maya/5.0/scripts/blueMelStudio_Maya50/blueMelStudio.mll\"`)\r\n\tloadPlugin \"C:/Documents and Settings/lherveic/Mes documents/maya/5.0/scripts/blueMelStudio_Maya50/blueMelStudio.mll\";\r\neval blueMelStudio;" 
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+
+} 

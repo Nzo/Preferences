@@ -1,0 +1,79 @@
+
+    menuItem
+        -label "Free" 
+        -divider 0
+        -subMenu 0
+        -command "keyTangent -weightLock off;" 
+        -altModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "N" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem2;
+
+    menuItem
+        -label "Linear" 
+        -divider 0
+        -subMenu 0
+        -command "keyTangent -itt linear -ott linear;" 
+        -altModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "E" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem3;
+
+    menuItem
+        -label "Break" 
+        -divider 0
+        -subMenu 0
+        -command "keyTangent -lock off;" 
+        -altModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "S" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem4;
+
+    menuItem
+        -label "Weight" 
+        -divider 0
+        -subMenu 0
+        -command "keyTangent -edit -weightedTangents true;" 
+        -altModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "W" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem1;
+
+setParent -m ..;
+

@@ -1,0 +1,201 @@
+
+    menuItem
+        -label "RecupBlendShape" 
+        -divider 0
+        -subMenu 0
+        -command "source AMrecupBlendShape;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem1;
+
+    menuItem
+        -label "connectToBlendShapes" 
+        -divider 0
+        -subMenu 0
+        -command "source connectShapesToBlendShape;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem2;
+
+    menuItem
+        -divider 1
+        -subMenu 0
+        -data 0
+        menuEditorMenuItem16;
+
+    menuItem
+        -label "symWorkProc" 
+        -divider 0
+        -subMenu 0
+        -command "NZ_symWorkProcUI;\r\n\r\n\r\n\r\n" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem3;
+
+    menuItem
+        -divider 1
+        -subMenu 0
+        -data 0
+        menuEditorMenuItem7;
+
+    menuItem
+        -label "morpherSetup" 
+        -divider 0
+        -subMenu 0
+        -command "DPK_animationInterfaceSetup" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem4;
+
+    menuItem
+        -label "morpher" 
+        -divider 0
+        -subMenu 0
+        -command "DPK_animationInterface;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem5;
+
+    menuItem
+        -divider 1
+        -subMenu 0
+        -data 0
+        menuEditorMenuItem17;
+
+    menuItem
+        -label "muscleSculpt" 
+        -divider 0
+        -subMenu 0
+        -command "BSpiritCorrectiveShape;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem19;
+
+    menuItem
+        -label "FinalRig" 
+        -divider 0
+        -subMenu 0
+        -command "FinalRig;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem20;
+
+    menuItem
+        -label "blShape_Manager" 
+        -divider 0
+        -subMenu 0
+        -command "blendShape_Manager091" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem28;
+
+    menuItem
+        -label "bsRender" 
+        -divider 0
+        -subMenu 0
+        -command "bsRender;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem30;
+
+setParent -m ..;
+

@@ -1,0 +1,69 @@
+
+clear $lsLayer;
+string $lsLayer[]=`ls -typ "displayLayer"`;
+int $cblayer;
+
+	menuItem
+	-label "  LAYERS"
+	-boldFont 1;
+
+
+for($u in $lsLayer)
+{
+	if($u != "defaultLayer")
+	{
+		$cblayer=`getAttr ($u + ".visibility")`;
+		menuItem
+		-label $u
+		-checkBox $cblayer
+		-command ("layerState "+ $u + ";")
+		-boldFont 0
+		("menuLayer"+ $u);
+
+		menuItem
+		-label $u
+		-optionBox 1
+		-command ("switchLayer "+ $u);
+	}
+}
+
+setParent -m ..;
+
+
+
+
+
+global proc layerState(string $layerName)
+{
+	int $layerVis=`getAttr ($layerName + ".visibility")`;
+	if ($layerVis==1)
+		{
+		setAttr ($layerName + ".visibility") 0;
+		menuItem -e -cb 0 ("menuLayer" + $layerName);
+		}
+	else
+		{
+		setAttr ($layerName + ".visibility") 1;
+		menuItem -e -cb 1 ("menuLayer" + $layerName);
+		}
+
+}
+
+global proc switchLayer(string $clay)
+{
+	int $m=0;
+	string $lsLayer[]=`ls -typ "displayLayer"`;
+	for($o in $lsLayer)	
+	{
+		$m=`getAttr ($o +".displayType")`;
+		if($o != $clay && $m != 2 && $o != "defaultLayer") 
+		{
+			setAttr ($o + ".visibility") 0;
+		}
+		
+	}
+	setAttr ($clay + ".visibility") 1;
+}
+
+
+

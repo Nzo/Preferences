@@ -1,0 +1,168 @@
+
+    menuItem
+        -label "artSelectContext" 
+        -divider 0
+        -subMenu 0
+        -command "setToolTo artSelectContext;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "N" 
+        -enableCommandRepeat 1
+        -image "artSelect.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem28;
+
+    menuItem
+        -label "ELFdefaultMenuItem" 
+        -divider 0
+        -subMenu 0
+        -command "setToolTo artSelectContext; ; toolPropertyWindow" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 1
+        -enable 1
+        -data 0
+        -radialPosition "N" 
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem29;
+
+    menuItem
+        -label "selectSuperContext" 
+        -divider 0
+        -subMenu 0
+        -command "setToolTo selectSuperContext;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "E" 
+        -enableCommandRepeat 1
+        -image "aselect.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem32;
+
+    menuItem
+        -label "ELFdefaultMenuItem" 
+        -divider 0
+        -subMenu 0
+        -command "setToolTo selectSuperContext; ; toolPropertyWindow" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 1
+        -enable 1
+        -data 0
+        -radialPosition "E" 
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem33;
+
+    menuItem
+        -label "popUpList" 
+        -divider 0
+        -subMenu 0
+        -command "int $pms=`selectPref -q -pms`;\nif($pms==0)\n\tselectPref -pms 1;\nelse\n\tselectPref -pms 0;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "S" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem34;
+
+    menuItem
+        -label "clickDrag" 
+        -divider 0
+        -subMenu 0
+        -command "int $pms=`selectPref -q -clickDrag`;\nif($pms==0)\n\tselectPref -clickDrag 1;\nelse\n\tselectPref -clickDrag 0;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "SW" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem35;
+
+    menuItem
+        -label "lassoSelectContext" 
+        -divider 0
+        -subMenu 0
+        -command "setToolTo lassoSelectContext;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "W" 
+        -enableCommandRepeat 1
+        -image "lassoSelect.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem30;
+
+    menuItem
+        -label "ELFdefaultMenuItem" 
+        -divider 0
+        -subMenu 0
+        -command "setToolTo lassoSelectContext; ; toolPropertyWindow" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 1
+        -enable 1
+        -data 0
+        -radialPosition "W" 
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 1
+        menuEditorMenuItem31;
+
+setParent -m ..;
+

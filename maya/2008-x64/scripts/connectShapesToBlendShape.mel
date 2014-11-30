@@ -1,0 +1,164 @@
+//=========================================================================
+// Script permettant de reconnecter des shapes à un noeud de blendShape
+//
+//	-> lancer la commande "connectShapesToBlendShape" pour lancer l'interface,
+//	   puis selectionner le noeud de blendShape et cliquer sur choose.
+//	   et selectionner les shapes que l'on veut reconnecter au noeud de blendShape
+//
+//=========================================================================
+
+// Ali 08/2004
+
+
+
+
+
+
+//=========================================================================
+// Creation de la Procedure
+//=========================================================================
+
+global proc connecBS (string $nomBlendShape, string $nomShapes[])
+{
+	int $nbrTargets;
+	int $numTarget;
+	string $nomTargets[];
+	string $tempName[];
+	
+	// compte le nombre de targets du noeud de blendShape
+	$nbrTargets = `blendShape -q -weightCount ($nomBlendShape + ".weight")`;
+	
+	// recupere les noms des targets du blendShape
+	for ($i=0; $i<$nbrTargets; $i++)
+	{
+		$tempName = `listAttr ($nomBlendShape + ".weight[" + $i + "]")`;
+		$nomTargets[$i] = $tempName[0];
+	}
+	
+	// parcoure toutes les shapes selectionnees et identifie les targets leur correspondant,
+	// puis reconnecte les shapes au noeud de blendShape
+	for ($nShape in $nomShapes)
+	{
+		for ($j=0; $j<size($nomTargets); $j++)
+		{
+			if ($nShape == $nomTargets[$j])
+			{
+				$numTarget = $j;
+				catch (`connectAttr ($nShape + ".worldMesh[0]") ($nomBlendShape + ".inputTarget[0].inputTargetGroup[" + $numTarget + "].inputTargetItem[6000].inputGeomTarget")`);
+			}
+		}
+	}
+}
+
+
+
+//=========================================================================
+// Creation de l'UI
+//=========================================================================
+
+// procedure qui stocke la selection du blendShape
+global proc chooseBS()
+{
+	string $window = "win_connectShapestoBS";
+	string $b_chooseBS = ($window+"_chooseBS");
+	string $sel[] = `ls -sl`;
+	
+	textFieldButtonGrp -e -tx $sel[0] $b_chooseBS;
+}
+
+
+// procedure qui stocke la selection des Shapes
+global proc chooseShapes()
+{
+	string $window = "win_connectShapestoBS";
+	string $b_chooseShapes = ($window+"_chooseShapes");
+	string $sel[] = `ls -sl`;
+	string $selCatenate;
+	
+	for($i=0; $i<size($sel); $i++)
+	{
+		$selCatenate += $sel[$i] + ",";
+	}
+	
+	textFieldButtonGrp -e -tx $selCatenate $b_chooseShapes;
+}
+
+
+
+// procedure qui lance le script en appuyant sur "apply"
+global proc callProc()
+{
+	string $window = "win_connectShapestoBS";
+	string $b_chooseBS = ($window+"_chooseBS");
+	string $b_chooseShapes = ($window+"_chooseShapes");
+	string $selBS = `textFieldButtonGrp -q -tx $b_chooseBS`;	//recupere le nom du blendShape selectionne
+	string $tempNameShapes = `textFieldButtonGrp -q -tx $b_chooseShapes`;	//recupere les noms des shapes selectionne
+	string $selShapes[];
+	tokenizeList $tempNameShapes $selShapes;
+	
+	connecBS $selBS $selShapes;
+}
+
+
+
+
+//-------------------------------------------------------------------------
+// Lancement de la fenetre / UI
+//-------------------------------------------------------------------------
+
+global proc connectShapesToBlendShape()
+{
+	string $window = "win_connectShapestoBS";
+	
+	if (`window -ex $window`) 
+	{
+		deleteUI -window $window;
+	}
+	$window = `window -title "Reconnect Shapes To BlendShape"
+	    	-iconName "connectShapes2BS"
+	    	-widthHeight 375 150
+			-rtf true
+			$window`;
+	
+	gridLayout -numberOfColumns 1 -cellWidthHeight 400 25;
+		
+		separator -w 500;
+		string  $b_chooseBS= `textFieldButtonGrp
+							-l "BlendShape :"
+							-ed 0
+							-bl "Choose"
+							-cw 1 100
+							-adj 2
+							-cw 3 55
+							-cat 3 "left" 5
+							($window+"_chooseBS")`;
+		string $b_chooseShapes = `textFieldButtonGrp
+							-l "Shapes :"
+							-ed 0
+							-bl "Choose"
+							-cw 1 100
+							-adj 2
+							-cw 3 55
+							-cat 3 "left" 5
+							($window+"_chooseShapes")`;
+		
+		
+		textFieldButtonGrp -e -bc "chooseBS" $b_chooseBS;
+		textFieldButtonGrp -e -bc "chooseShapes" $b_chooseShapes;
+		separator -w 500;
+		
+		string $b_apply  = `button -l "Apply" ($window+"_apply")`;
+		button -e -c "callProc" $b_apply;
+
+				
+	showWindow $window;
+}
+
+
+
+
+//=========================================================================
+// Lancement du Script
+//=========================================================================
+
+connectShapesToBlendShape;

@@ -1,0 +1,313 @@
+
+    menuItem
+        -label "POLYGON" 
+        -divider 0
+        -subMenu 0
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -italicized 0
+        -boldFont 1
+        menuItem4154;
+
+    menuItem
+        -label "PolySphere" 
+        -divider 0
+        -subMenu 0
+        -command "CreatePolygonSphere" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem4155;
+
+    menuItem
+        -label "PolyCube" 
+        -divider 0
+        -subMenu 0
+        -command "CreatePolygonCube;" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem4156;
+
+    menuItem
+        -label "PolyCylinder" 
+        -divider 0
+        -subMenu 0
+        -command "CreatePolygonCylinder" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem4157;
+
+    menuItem
+        -label "PolyCone" 
+        -divider 0
+        -subMenu 0
+        -command "CreatePolygonCone" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem4158;
+
+    menuItem
+        -label "PolyPlane" 
+        -divider 0
+        -subMenu 0
+        -command "CreatePolygonPlane" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem4159;
+
+    menuItem
+        -label "PolyTorus" 
+        -divider 0
+        -subMenu 0
+        -command "CreatePolygonTorus" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem4160;
+
+    menuItem
+        -divider 1
+        -subMenu 0
+        -data 0
+        menuItem4161;
+
+    menuItem
+        -label "NURBS" 
+        -divider 0
+        -subMenu 0
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -italicized 0
+        -boldFont 1
+        menuItem4162;
+
+    menuItem
+        -label "NurbsSphere" 
+        -divider 0
+        -subMenu 0
+        -command "CreateNURBSSphere" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem4163;
+
+    menuItem
+        -label "NurbsCylinder" 
+        -divider 0
+        -subMenu 0
+        -command "CreateNURBSCylinder" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem4164;
+
+    menuItem
+        -label "NurbsPlane" 
+        -divider 0
+        -subMenu 0
+        -command "CreateNURBSPlane" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem4165;
+
+    menuItem
+        -label "NurbsCircle" 
+        -divider 0
+        -subMenu 0
+        -command "CreateNURBSCircle" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem4166;
+
+    menuItem
+        -label "NurbsSquare" 
+        -divider 0
+        -subMenu 0
+        -command "CreateNURBSSquare" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem4167;
+
+    menuItem
+        -divider 1
+        -subMenu 0
+        -data 0
+        menuItem4168;
+
+    menuItem
+        -label "LIGHT" 
+        -divider 0
+        -subMenu 0
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -italicized 0
+        -boldFont 1
+        menuItem4169;
+
+    menuItem
+        -label "DirectLight" 
+        -divider 0
+        -subMenu 0
+        -command "CreateDirectionalLight" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem4170;
+
+    menuItem
+        -label "PointLight" 
+        -divider 0
+        -subMenu 0
+        -command "CreatePointLight" 
+        -altModifier 0
+        -optionModifier 0
+        -commandModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuItem4171;
+
+setParent -m ..;
+

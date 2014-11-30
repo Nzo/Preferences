@@ -1,0 +1,250 @@
+//Maya Preference 8.50 (Release 1)
+//
+//
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("lookThroughSelected 0 modelPanel4;")
+	Look_Selected;
+
+runTimeCommand
+	-annotation "WindowJKey (Press)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }\npopupMenu -button 1 -ctl false -alt false -allowOptionBoxes true -parent viewPanes -mm 1 tempMM;\nsource \"menu_WindowJKey\";")
+	WindowJKey_Press;
+
+runTimeCommand
+	-annotation "WindowJKey (Release)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }")
+	WindowJKey_Release;
+
+runTimeCommand
+	-annotation "windowMenu (Press)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }\npopupMenu -button 1 -ctl false -alt false -allowOptionBoxes true -parent viewPanes -mm 1 tempMM;\nsource \"menu_windowMenu\";")
+	windowMenu_Press;
+
+runTimeCommand
+	-annotation "windowMenu (Release)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }")
+	windowMenu_Release;
+
+runTimeCommand
+	-annotation "WindowKKey (Press)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }\npopupMenu -button 1 -ctl false -alt false -allowOptionBoxes true -parent viewPanes -mm 1 tempMM;\nsource \"menu_WindowKKey\";")
+	WindowKKey_Press;
+
+runTimeCommand
+	-annotation "WindowKKey (Release)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }")
+	WindowKKey_Release;
+
+runTimeCommand
+	-annotation "Smooth_Menu (Press)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }\npopupMenu -button 1 -ctl false -alt false -sh false -allowOptionBoxes true -parent viewPanes -mm 1 tempMM; \nsource \"menu_Smooth_Menu\";\n")
+	Smooth_Menu_Press;
+
+runTimeCommand
+	-annotation "Smooth_Menu (Release)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }")
+	Smooth_Menu_Release;
+
+runTimeCommand
+	-annotation "builderMenu (Press)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }\npopupMenu -button 1 -ctl false -alt false -allowOptionBoxes true -parent viewPanes -mm 1 tempMM;\nsource \"menu_builderMenu\";")
+	builderMenu_Press;
+
+runTimeCommand
+	-annotation "builderMenu (Release)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }")
+	builderMenu_Release;
+
+runTimeCommand
+	-annotation "PA_Style_MMB (Press)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }\npopupMenu -button 1 -ctl false -alt false -sh false -allowOptionBoxes true -parent viewPanes -mm 1 tempMM; \nsource \"menu_PA_Style_MMB\";\n")
+	PA_Style_MMB_Press;
+
+runTimeCommand
+	-annotation "PA_Style_MMB (Release)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }")
+	PA_Style_MMB_Release;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("if ( `getPanel -to ( eval( \"getPanel -withFocus\" ) )` ) {   $currentPanel = `getPanel -withFocus`;\r\nstring $camera = `modelEditor -q -camera $currentPanel`;viewLookAt $camera;}")
+	frameSelectedView;
+
+runTimeCommand
+	-annotation "Snap (Press)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }\npopupMenu -button 1 -ctl false -alt false -sh false -allowOptionBoxes true -parent viewPanes -mm 1 tempMM; \nsource \"menu_Snap\";\n")
+	Snap_Press;
+
+runTimeCommand
+	-annotation "Snap (Release)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }")
+	Snap_Release;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("if ( `getPanel -to ( eval( \"getPanel -withFocus\" ) )` ) {   $currentPanel = `getPanel -withFocus`;\r\n    if (\"1\"==`modelEditor -q -wos $currentPanel`)\r\n       modelEditor -e -wos 0 $currentPanel;\r\n    else       modelEditor -e -wos 1 $currentPanel;}")
+	Toggle_wireframeOnShaded;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("if ( `getPanel -to ( eval( \"getPanel -withFocus\" ) )` ) {   $currentPanel = `getPanel -withFocus`;    if (\"smoothShaded\"==`modelEditor -q -da $currentPanel`)       modelEditor -e -da \"wireframe\" $currentPanel;    else       modelEditor -e -da \"smoothShaded\" $currentPanel;}")
+	Toggle_shaded;
+
+runTimeCommand
+	-annotation "attributeMan (Press)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }\npopupMenu -button 1 -ctl false -alt false -sh false -allowOptionBoxes true -parent viewPanes -mm 1 tempMM; \nsource \"menu_attributeMan\";\n")
+	attributeMan_Press;
+
+runTimeCommand
+	-annotation "attributeMan (Release)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }")
+	attributeMan_Release;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("if ( `getPanel -to ( eval( \"getPanel -withFocus\" ) )` ) {   $currentPanel = `getPanel -withFocus`;")
+	Toggle_ViewSelected;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("global proc string[] listMySel()\n{\n\tint\t$nbMyNodes = 0;\n\tstring $myList[];\n\tclear $myList;\n\t$myList = `ls -sl `;\n\treturn $myList;\n}\n\n\nif (`headsUpDisplay -ex HUDselectedObj`==0)\n{\nheadsUpDisplay -section          5\n               -block            2\n               -blockSize        \"small\"\n               -label            \"Selection\"\n               -labelFontSize    \"small\"\n               -command          \"listMySel()\"\n               -event            \"SelectionChanged\"\n               -nodeChanges      \"attributeChange\"\n               HUDselectedObj;\n}\nelse\n{\n\theadsUpDisplay -rem HUDselectedObj;\n}")
+	headsUpSelection;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("global proc string[] listMySnap()\n{\n\tint $nbMyNodes = 0;\n\tstring $myList[];\n\tclear $myList;\n\tint $i=0;\n\n\tif(`snapMode -q -point`==1)\n\t\t$myList[$i++]=\"point\";\n\tif(`snapMode -q -curve`==1)\n\t\t$myList[$i++]=\"curve\";\n\tif(`snapMode -q -grid`==1)\n\t\t$myList[$i++]=\"grid\";\n\tif(`snapMode -q -viewPlane`==1)\n\t\t$myList[$i++]=\"viewPlane\";\n\n\tprint $myList;\n\treturn $myList;\n}\n\n\nif(`headsUpDisplay -ex HUDsnapMode`==0)\n{\nheadsUpDisplay -section          5\n               -block            3\n               -blockSize        \"small\"\n               -label            \"Snap\"\n               -labelFontSize    \"small\"\n               -command          \"listMySnap()\"\n               -event            \"snapModeChanged\"\n               -nodeChanges      \"attributeChange\"\n               HUDsnapMode;\n}\nelse\n{\nheadsUpDisplay -rem HUDsnapMode;\n}\n\n\n")
+	headsUpSnap;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("select -cl;")
+	clearSelected;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("\n$currentPanel = `getPanel -withFocus`;\nint $xray=`modelEditor -q -xr $currentPanel`;\nif($xray==0)\n{\n\tsetXrayOption 1 $currentPanel;\n}\nelse\n{\n\tsetXrayOption 0 $currentPanel;\n}")
+	Toggle_xray;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("startxCameraTools;")
+	xCamera;
+
+runTimeCommand
+	-annotation "layerManager (Press)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }\npopupMenu -button 1 -ctl false -alt false -sh true -allowOptionBoxes true -parent viewPanes -mm 1 tempMM; \nsource \"menu_layerManager\";\n")
+	layerManager_Press;
+
+runTimeCommand
+	-annotation "layerManager (Release)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }")
+	layerManager_Release;
+
+runTimeCommand
+	-annotation "CamerasLight (Press)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }\npopupMenu -button 1 -ctl false -alt false -sh false -allowOptionBoxes true -parent viewPanes -mm 1 tempMM; \nsource \"menu_CamerasLight\";\n")
+	CamerasLight_Press;
+
+runTimeCommand
+	-annotation "CamerasLight (Release)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }")
+	CamerasLight_Release;
+
+runTimeCommand
+	-annotation "SelectMenu (Press)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }\npopupMenu -button 1 -ctl false -alt false -sh true -allowOptionBoxes true -parent viewPanes -mm 1 tempMM; \nsource \"menu_SelectMenu\";\n")
+	SelectMenu_Press;
+
+runTimeCommand
+	-annotation "SelectMenu (Release)"
+	-category "User Marking Menus"
+	-command ("if (`popupMenu -exists tempMM`) { deleteUI tempMM; }")
+	SelectMenu_Release;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("hyperShadePanelMenuCommand(\"hyperShadePanel1\", \"deleteUnusedNodes\");\n\n")
+	deleteUnusedNodes;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("NZ_copySelectionProc();")
+	transferSelection;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("")
+	headsUp;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("string $layer[]=`ls -type \"displayLayer\"`;\nstring $myLayer[];\nclear $myLayer;\nint $uu=0;\n\nfor ($i in $layer)\n{\n\tif($i != \"defaultLayer\")\n\t{\n\t\t$myLayer[$uu] = $i;\n\t\t$uu++;\n\t}\n}\n\n\nif(`getAttr ($myLayer[0] + \".visibility\")`==1)\n\tsetAttr ($myLayer[0] + \".visibility\") 0;\nelse\n\tsetAttr ($myLayer[0] + \".visibility\") 1;\n\n")
+	toggleLayerOne;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("string $layer[]=`ls -type \"displayLayer\"`;\nstring $myLayer[];\nclear $myLayer;\nint $uu=0;\n\nfor ($i in $layer)\n{\n\tif($i != \"defaultLayer\")\n\t{\n\t\t$myLayer[$uu] = $i;\n\t\t$uu++;\n\t}\n}\n\n\nif(`getAttr ($myLayer[1] + \".visibility\")`==1)\n\tsetAttr ($myLayer[1] + \".visibility\") 0;\nelse\n\tsetAttr ($myLayer[1] + \".visibility\") 1;")
+	toggleLayerTwo;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("string $layer[]=`ls -type \"displayLayer\"`;\nstring $myLayer[];\nclear $myLayer;\nint $uu=0;\n\nfor ($i in $layer)\n{\n\tif($i != \"defaultLayer\")\n\t{\n\t\t$myLayer[$uu] = $i;\n\t\t$uu++;\n\t}\n}\n\n\nif(`getAttr ($myLayer[2] + \".visibility\")`==1)\n\tsetAttr ($myLayer[2] + \".visibility\") 0;\nelse\n\tsetAttr ($myLayer[2] + \".visibility\") 1;")
+	toggleLayerThree;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("string $layer[]=`ls -type \"displayLayer\"`;\nstring $myLayer[];\nclear $myLayer;\nint $uu=0;\n\nfor ($i in $layer)\n{\n\tif($i != \"defaultLayer\")\n\t{\n\t\t$myLayer[$uu] = $i;\n\t\t$uu++;\n\t}\n}\n\n\nif(`getAttr ($myLayer[3] + \".visibility\")`==1)\n\tsetAttr ($myLayer[3] + \".visibility\") 0;\nelse\n\tsetAttr ($myLayer[3] + \".visibility\") 1;")
+	toggleLayerFour;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("HighQualityDisplay;")
+	highQuality;
+
+runTimeCommand
+	-annotation ""
+	-category "User"
+	-command ("LowQualityDisplay;")
+	lowQuality;
+

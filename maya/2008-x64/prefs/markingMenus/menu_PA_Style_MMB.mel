@@ -1,0 +1,97 @@
+
+    menuItem
+        -label "Center Pivot" 
+        -divider 0
+        -subMenu 0
+        -command "xform -cp" 
+        -altModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "N" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 1
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem4;
+
+    menuItem
+        -label "Ungroup" 
+        -divider 0
+        -subMenu 0
+        -command "performUngroup false" 
+        -altModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "E" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 1
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem7;
+
+    menuItem
+        -label "Align Objects Option Box" 
+        -divider 0
+        -subMenu 0
+        -command "performAlignObjects 1" 
+        -altModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "S" 
+        -enableCommandRepeat 1
+        -image "alignObjects.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem9;
+
+    menuItem
+        -label "Group" 
+        -divider 0
+        -subMenu 0
+        -command "performGroup false" 
+        -altModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -radialPosition "W" 
+        -enableCommandRepeat 1
+        -image "commandButton.xpm" 
+        -echoCommand 1
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem5;
+
+    menuItem
+        -label "Snap Together Tool" 
+        -divider 0
+        -subMenu 0
+        -command "setToolTo snapTogetherToolCtx" 
+        -altModifier 0
+        -ctrlModifier 0
+        -shiftModifier 0
+        -optionBox 0
+        -enable 1
+        -data 0
+        -enableCommandRepeat 1
+        -image "snapTogetherTool.xpm" 
+        -echoCommand 0
+        -italicized 0
+        -boldFont 0
+        menuEditorMenuItem10;
+
+setParent -m ..;
+

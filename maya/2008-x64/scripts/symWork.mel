@@ -1,0 +1,386 @@
+// Zabelin V.V.  02.10.01.
+// Script pack for creating blendshapes.
+// Include:
+// 1.Copy (or exhange) part of geometry from one side to other   
+// 2.Copy (or exchange) selection sets from one side of geometry to other
+// 3.Copy positions of selected vertex from one polyset to other
+// 4.Transfer selection sets from one polyset to other.
+// Using
+// 1.Select polyset and fix it as base shape (source geometry, target selection)
+// 2. On working polyset select some vertexes.
+// 3.Apply corresponding actions.
+//
+//----------------------------------------------------------------------------------------------
+// zabelinv@mtu-net.ru
+//-----------------------------------------------------------------------------------------------
+proc float distBetween(float $a[], float $b[]){
+
+float $result;
+$result=sqrt(($a[0]-$b[0])*($a[0]-$b[0]) +
+		     ($a[1]-$b[1])*($a[1]-$b[1])+
+		     ($a[2]-$b[2])*($a[2]-$b[2]));
+return $result;
+}; // end of distBetween
+//-----------------------------------------------------------------------------------------------
+proc copyShapeSelectProc(int $direction,float $tolerans, int $addReplace,string $sourceShapeName){
+
+string $selPoints[]=`filterExpand -sm 31`;
+if (size($selPoints)==0)
+	error "No polygon vertexes are selected !";
+
+else{
+	int $sourceNumbers[];
+// determ object Name	
+	string $tokStr[],$numStr[],$objName;
+	tokenize $selPoints[0] "[" $tokStr;
+	tokenize $tokStr[1] "]" $numStr;
+
+//	$objName=substring($tokStr[0],1,(size($tokStr[0])-4));
+	$objName=$tokStr[0];
+
+// sorting selected points	
+	$sourceNumbers[0]=int($numStr[0]);
+
+	int $i;
+	int $j=1;
+	
+	for ($i=1;$i<size($selPoints);$i++){
+		tokenize $selPoints[$i] "[" $tokStr;
+		if ($tokStr[0]==$objName){
+			tokenize $tokStr[1] "]" $numStr;
+			$sourceNumbers[$j]=int($numStr[0]);
+			$j++;
+			};
+			
+		};
+	if ($sourceShapeName=="")
+		error "No Base Shape (polyset) specified !";
+	else {
+		float 	$sourPoint[3],$searchPoint[3],$oldSourPoint[3];
+		
+		int $polyPointsNumber=`getAttr -size ($sourceShapeName+".vrts")`;
+
+//find respective points;
+		
+		int $respectNumber;
+		int $OK;
+		for ($i=0;$i<size($sourceNumbers);$i++){
+			$sourPoint=`pointPosition -l ($sourceShapeName+".vtx["+$sourceNumbers[$i]+"]")`;
+			$sourPoint[$direction]= -$sourPoint[$direction];
+			$OK=0;
+			for ($j=0;$j<$polyPointsNumber;$j++){
+				$searchPoint=`pointPosition -l ($sourceShapeName+".vtx["+$j+"]")`;
+				if (distBetween($searchPoint, $sourPoint)<=$tolerans){
+				   	$OK=1;
+				   	$respectNumber=$j;
+				   	$sourPoint=`pointPosition -l ($objName+"["+$sourceNumbers[$i]+"]")`;
+					$sourPoint[$direction]= -$sourPoint[$direction];
+								
+					if ($addReplace==1){
+						$oldSourPoint=`pointPosition -l ($objName+"["+$respectNumber+"]")`;
+						$oldSourPoint[$direction]=-$oldSourPoint[$direction];
+						};
+					xform -os -t ($sourPoint[0]) ($sourPoint[1]) ($sourPoint[2]) ($objName+"["+$respectNumber+"]");
+					if ($addReplace==1)
+						xform -os -t ($oldSourPoint[0]) ($oldSourPoint[1]) ($oldSourPoint[2]) 
+							($objName+"["+$sourceNumbers[$i]+"]");
+				}; // end of if
+				if ($OK==1)
+					break;
+			}; //end of for cycle by j
+		
+//search sucsess, move point
+		
+		};// end of for  by i
+	}; //end of if
+};//end of if
+};
+
+//-----------------------------------------------------------------------------------------------
+proc symShapeSelectProc(int $direction,float $tolerans, int $addReplace,string $sourceShapeName){
+
+string $selPoints[]=`filterExpand -sm 31`;
+if (size($selPoints)==0)
+	error "No polygon vertexes are selected !";
+
+else{
+	int $sourceNumbers[];
+// determ object Name	
+	string $tokStr[],$numStr[],$objName;
+	tokenize $selPoints[0] "[" $tokStr;
+	tokenize $tokStr[1] "]" $numStr;
+
+//	$objName=substring($tokStr[0],1,(size($tokStr[0])-4));
+	$objName=$tokStr[0];
+
+// sorting selected points	
+	$sourceNumbers[0]=int($numStr[0]);
+
+	int $i;
+	int $j=1;
+	
+	for ($i=1;$i<size($selPoints);$i++){
+		tokenize $selPoints[$i] "[" $tokStr;
+		if ($tokStr[0]==$objName){
+			tokenize $tokStr[1] "]" $numStr;
+			$sourceNumbers[$j]=int($numStr[0]);
+			$j++;
+			};
+			
+		};
+	if ($sourceShapeName=="")
+		error "No Base Shape (polyset) shape specified !";
+	else {
+		float 	$sourPoint[3],$searchPoint[3],$oldSourPoint[3];
+		
+		int $polyPointsNumber=`getAttr -size ($sourceShapeName+".vrts")`;
+
+//find respective points;
+		
+		int $respectNumber;
+		int $OK;
+		if ($addReplace==1)
+			select -clear;
+		for ($i=0;$i<size($sourceNumbers);$i++){
+			$sourPoint=`pointPosition -l ($sourceShapeName+".vtx["+$sourceNumbers[$i]+"]")`;
+			$sourPoint[$direction]= -$sourPoint[$direction];
+			$OK=0;
+			for ($j=0;$j<$polyPointsNumber;$j++){
+				$searchPoint=`pointPosition -l ($sourceShapeName+".vtx["+$j+"]")`;
+				if (distBetween($searchPoint, $sourPoint)<=$tolerans){
+				   	$OK=1;
+				   	$respectNumber=$j;
+				   	select -add ($objName+"["+$respectNumber+"]");
+				   	}; // end of if
+				if ($OK==1)
+					break;
+			}; //end of for cycle by j
+		
+//search sucsess, move point
+		
+		};// end of for  by i
+	}; //end of if
+};//end of if
+};
+
+//-----------------------------------------------------------------------------------------------
+proc copyFromSelectProc(string $fromShapeName){
+
+string $selPoints[]=`filterExpand -sm 31`;
+if (size($selPoints)==0)
+	error "No polygon vertexes are selected !";
+
+else{
+	int $sourceNumbers[];
+// determ object Name	
+	string $tokStr[],$numStr[],$objName;
+	tokenize $selPoints[0] "[" $tokStr;
+	tokenize $tokStr[1] "]" $numStr;
+
+//	$objName=substring($tokStr[0],1,(size($tokStr[0])-4));
+	$objName=$tokStr[0];
+
+// sorting selected points	
+	$sourceNumbers[0]=int($numStr[0]);
+
+	int $i;
+	int $j=1;
+	
+	for ($i=1;$i<size($selPoints);$i++){
+		tokenize $selPoints[$i] "[" $tokStr;
+		if ($tokStr[0]==$objName){
+			tokenize $tokStr[1] "]" $numStr;
+			$sourceNumbers[$j]=int($numStr[0]);
+			$j++;
+			};
+			
+		};
+	if ($fromShapeName=="")
+		error "No Source Geometry polyset specified !";
+	else {
+		for ($i=0;$i<size($sourceNumbers);$i++){
+			$sourPoint=`pointPosition -l ($fromShapeName+".vtx["+$sourceNumbers[$i]+"]")`;
+			xform -os -t ($sourPoint[0]) ($sourPoint[1]) ($sourPoint[2]) ($objName+"["+$sourceNumbers[$i]+"]");
+			};//end of for
+		}; //end of if
+};//end of if
+};
+//-----------------------------------------------------------------------------------------------
+global proc findSourceSelectProc(string $fromShapeName){
+string $selPoints[]=`filterExpand -sm 31`;
+if (size($selPoints)==0)
+	error "No polygon vertexes are selected !";
+
+else{
+	int $sourceNumbers[];
+// determ object Name	
+	string $tokStr[],$numStr[],$objName;
+	tokenize $selPoints[0] "[" $tokStr;
+	tokenize $tokStr[1] "]" $numStr;
+
+//	$objName=substring($tokStr[0],1,(size($tokStr[0])-4));
+	$objName=$tokStr[0];
+
+// sorting selected points	
+	$sourceNumbers[0]=int($numStr[0]);
+	int $i;
+	int $j=1;
+	
+	for ($i=1;$i<size($selPoints);$i++){
+		tokenize $selPoints[$i] "[" $tokStr;
+		if ($tokStr[0]==$objName){
+			tokenize $tokStr[1] "]" $numStr;
+			$sourceNumbers[$j]=int($numStr[0]);
+			$j++;
+			};
+			
+		};
+	if ($fromShapeName=="")
+		error "No Target Selection polyset specified !";
+	else {
+		select -clear;
+		for ($i=0;$i<size($sourceNumbers);$i++)
+			select -add ($fromShapeName+".vtx["+$sourceNumbers[$i]+"]");
+			
+		}; //end of if
+};//end of if
+};
+//-----------------------------------------------------------------------------------------------
+global proc symWork(){
+
+waitCursor -state on;
+string 	$window = "copyShapeSelectWindow";
+if (!`window -exists $window`)
+	makeCopyShapeSelectWindow($window);
+
+showWindow $window;
+waitCursor -state off;
+};
+
+//-----------------------------------------------------------------------------------------------
+global proc makeCopyShapeSelectWindow(string $window){
+
+window -title "Symmetrical Work Window"
+	-titleBar true
+	-minimizeButton true
+	-maximizeButton false
+	-sizeable true
+	-widthHeight 500 700
+	
+	$window;
+
+	columnLayout   -rs 10 -adjustableColumn true;
+		frameLayout -labelVisible false -marginWidth 10 -marginHeight 5 frameLayoutA;
+			columnLayout -rs 5 -adjustableColumn true;
+			textFieldButtonGrp -l " Base Shape" -bl "    Select    " -ed false -cw3 100 170 100  -cal 1 left
+			    -bc "updateSourceShapeName()" sourceShapeNameStr; 
+			separator;
+			radioButtonGrp -nrb 3 -cw4 100 50 50 50 -cal 1 left -l "Direction" -la3 "X" "Y" "Z" -sl 1 directionStr;
+			radioButtonGrp -nrb 2 -cw3 100 75 75 -cal 1 left -l "Geometry/Selection" -la2 "Copy" "Exchange" -sl 1 addReplaceStr;
+			separator;
+			floatSliderGrp  -cw  1 100 -cal 1 left  -l "Tolerance" -f true -min 0 -max 10 
+				     -fmn 0.0 -fmx 0.1 -pre 5  -ss 0.01 -v 0.001 toleranceStr;
+			separator;
+			rowLayout -numberOfColumns 2
+			-columnAlign2 "center" "center"
+			-columnAttach2 "both" "both" 
+			-columnWidth2 175 175 
+			-columnOffset2 0 15 ; 
+			button 
+			-l "Apply Geometry"
+			-c "doCopyShapeSelect";
+			button
+			-l "Apply Selection" 
+			-c "doSymShapeSelect";
+				setParent..;
+			setParent..;	
+		setParent..;	
+		
+		frameLayout -labelVisible false -marginWidth 10 -marginHeight 5 frameLayoutB;
+			columnLayout -rs 5 -adjustableColumn true;
+			textFieldButtonGrp -l "Source Geometry" -bl "    Select    " -ed false -cw3 100 170 100  -cal 1 left
+					    -bc "updateFromShapeName()" fromShapeNameStr; 
+			textFieldButtonGrp -l "Target Selection" -bl "    Select    " -ed false -cw3 100 170 100  -cal 1 left
+					    -bc "updateSourceSelectionName()" sourceSelectNameStr; 		    
+				
+			separator;
+				
+			rowLayout -numberOfColumns 2
+			-columnAlign2 "center" "center"
+			-columnAttach2 "both" "both" 
+			-columnWidth2 175 175 
+			-columnOffset2 0 15; 
+			button 
+			-l "Transfer Selection"
+			-c "doFindSourceSelect";
+			button 
+			-l "Copy Geometry"
+			-c "doCopyFromSelect";
+				setParent ..;
+			setParent ..;
+		setParent ..;
+		
+		separator;
+	
+		
+		button 
+		-l "Close"
+		-c ("window -e -vis 0 " + $window);
+		 
+	
+
+		
+};
+//-----------------------------------------------------------------------------------------------
+global proc updateSourceShapeName(){
+string $newName[]=`filterExpand -sm 12`;
+
+textFieldButtonGrp -e -tx ($newName[0]) sourceShapeNameStr;
+
+select -cl;
+};
+//-----------------------------------------------------------------------------------------------
+global proc updateFromShapeName(){
+string $newName[]=`filterExpand -sm 12`;
+textFieldButtonGrp -e -tx ($newName[0]) fromShapeNameStr;
+select -cl;
+};
+//-----------------------------------------------------------------------------------------------
+global proc updateSourceSelectionName(){
+string $newName[]=`filterExpand -sm 12`;
+textFieldButtonGrp -e -tx ($newName[0]) sourceSelectNameStr;
+select -cl;
+};
+//-----------------------------------------------------------------------------------------------
+global proc doCopyShapeSelect(){
+string $sourceShapeNameValue = `textFieldButtonGrp -q -tx sourceShapeNameStr`;
+float 	$toleranceValue = `floatSliderGrp -q -v toleranceStr`;
+int	$directionValue = `radioButtonGrp -q -sl directionStr`;
+$directionValue--;
+int	$addReplaceValue = `radioButtonGrp -q -sl addReplaceStr`;
+$addReplaceValue--;
+
+copyShapeSelectProc($directionValue,$toleranceValue,$addReplaceValue,$sourceShapeNameValue);
+};
+//-----------------------------------------------------------------------------------------------
+global proc doSymShapeSelect(){
+string $sourceShapeNameValue = `textFieldButtonGrp -q -tx sourceShapeNameStr`;
+float 	$toleranceValue = `floatSliderGrp -q -v toleranceStr`;
+int	$directionValue = `radioButtonGrp -q -sl directionStr`;
+$directionValue--;
+int	$addReplaceValue = `radioButtonGrp -q -sl addReplaceStr`;
+$addReplaceValue--;
+
+symShapeSelectProc($directionValue,$toleranceValue,$addReplaceValue,$sourceShapeNameValue);
+};
+//-----------------------------------------------------------------------------------------------
+global proc doCopyFromSelect(){
+string $sourceFromNameValue = `textFieldButtonGrp -q -tx fromShapeNameStr`;
+copyFromSelectProc($sourceFromNameValue);
+};
+//-----------------------------------------------------------------------------------------------
+global proc doFindSourceSelect(){
+string $sourceFromNameValue = `textFieldButtonGrp -q -tx sourceSelectNameStr`;
+findSourceSelectProc($sourceFromNameValue);
+};
+//-----------------------------------------------------------------------------------------------

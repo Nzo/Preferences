@@ -1,0 +1,117 @@
+global int $tchoaCameras;
+
+string $cameras[];
+string $camerasNames[];
+clear $cameras;
+clear $camerasNames;
+clear $selection;
+
+string $selection[] = `ls -sl`;
+string $allCameras[] = `ls -ca`;
+
+	menuItem
+		-label "CAMERAS"
+		-boldFont 1;
+
+int $i = 0;
+for ($camera in $allCameras)
+{
+	if ($camera != "frontShape" && $camera != "perspShape"  && $camera !="sideShape"  && $camera != "topShape")
+	{
+		$cameras[$i] = $camera;
+		$cameraName = `pickWalk -d up $camera`;
+		$camerasNames[$i++] = $cameraName[0];
+	}
+}
+
+if ($tchoaCameras < 0)
+	$tchoaCameras = 0;
+
+string $pos[8] = {"N","NE","E","SE","S","SW","W","NW"};
+
+int $j = 0;
+
+for ($i = $tchoaCameras * 5; $i < ($tchoaCameras * 5 + 5); $i++)
+{
+	if ($cameras[$i] != "")
+	{
+   menuItem
+        -label $camerasNames[$i]
+        -command ("switchModelView Perspective;\r\nlookThru " + $cameras[$i] +";")
+        -enable 1
+        -enableCommandRepeat 1
+        -image "view.xpm"
+        -boldFont 0;
+
+   menuItem
+        -label $camerasNames[$i]
+        -command ("select -r " + $cameras[$i] + ";" + "ShowAttributeEditorOrChannelBox" + ";")
+        -enable 1
+	-optionBox 1
+        -enableCommandRepeat 1
+        -image "view.xpm"
+        -boldFont 0;
+
+	}
+}
+
+setParent -m ..;
+
+
+global int $tchoaLights;
+
+string $lights[];
+string $lightsNames[];
+clear $lights;
+clear $lightsNames;
+
+string $allLights[] = `ls -lt`;
+
+	menuItem
+		-label "LIGHTS"
+		-boldFont 1;
+
+int $i = 0;
+for ($light in $allLights)
+{
+	if ($light != "frontShape" && $light != "perspShape"  && $light != "sideShape" 
+&& $light != "topShape")
+	{
+		$lights[$i] = $light;
+		$lightName = `pickWalk -d up $light`;
+		$lightsNames[$i++] = $lightName[0];
+	}
+}
+
+if ($tchoaLights < 0)
+	$tchoaLights = 0;
+
+string $pos[8] = {"N","NE","E","SE","S","SW","W","NW"};
+
+int $i = 0;
+
+for ($i = $tchoaLights * 5; $i < ($tchoaLights * 5 + 5); $i++)
+{
+	if ($lights[$i] != "")
+	{
+   menuItem
+        -label $lightsNames[$i]
+        -command ("select -r " + $lights[$i] + ";")
+        -enable 1
+        -enableCommandRepeat 1
+        -image "view.xpm"
+        -boldFont 0;
+
+   menuItem
+        -label "ELFdefaultMenuItem"
+        -command ("select -r " + $lights[$i] + ";" + "ShowAttributeEditorOrChannelBox;")
+        -enable 1
+	-optionBox 1
+        -enableCommandRepeat 1
+        -image "view.xpm"
+        -boldFont 0;
+	}
+}
+
+setParent -m ..;
+select -r $selection;

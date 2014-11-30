@@ -1,0 +1,151 @@
+global proc shelf_mpcRetime () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "In time" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "/software/tools/config/retime/0.6/retimeIn.xpm" 
+        -image1 "/software/tools/config/retime/0.6/retimeIn.xpm" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from maya import cmds, OpenMaya\nretimeNodes = cmds.ls( type='retimeInfo' )\nif len( retimeNodes ) == 0:\n\tOpenMaya.MGlobal.displayError( 'No retime nodes present.' )\nelse:\n\tcmds.setAttr( retimeNodes[0] + '.input', 1 )" 
+        -sourceType "python" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "Working time" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "/software/tools/config/retime/0.6/retimeWorking.xpm" 
+        -image1 "/software/tools/config/retime/0.6/retimeWorking.xpm" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from maya import cmds, OpenMaya\nretimeNodes = cmds.ls( type='retimeInfo' )\nif len( retimeNodes ) == 0:\n\tOpenMaya.MGlobal.displayError( 'No retime nodes present.' )\nelse:\n\tcmds.setAttr( retimeNodes[0] + '.input', 0 )" 
+        -sourceType "python" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "Out time" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "/software/tools/config/retime/0.6/retimeOut.xpm" 
+        -image1 "/software/tools/config/retime/0.6/retimeOut.xpm" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from maya import cmds, OpenMaya\nretimeNodes = cmds.ls( type='retimeInfo' )\nif len( retimeNodes ) == 0:\n\tOpenMaya.MGlobal.displayError( 'No retime nodes present.' )\nelse:\n\tcmds.setAttr( retimeNodes[0] + '.input', 2 )" 
+        -sourceType "python" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 0
+        -enable 0
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -sourceType "mel" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "Disconnect retime node" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "/software/tools/config/retime/0.6/retimeDisconnect.xpm" 
+        -image1 "/software/tools/config/retime/0.6/retimeDisconnect.xpm" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "import maya.cmds as cmds\n'''Diconnect retime from everything in the scene'''\nretimeNodes = cmds.ls( type='retimeInfo' )\nfor retime in retimeNodes:\n\tsrc = '%s.timeOut' % retime\n\tmayaTime = cmds.ls( type='time' )[0]\n\ttimePlug = '%s.outTime' % mayaTime\n\tconnect = lambda dest: not cmds.isConnected(timePlug, dest) and cmds.connectAttr(timePlug, dest, force=True)\n\tconnectionList = cmds.listConnections( src, plugs=True, scn=True )\n\tfor connection in connectionList:\n\t\t#skip anything connected to this node\n\t\tif not connection.startswith(retime):\n\t\t\tprint 'DISconnecting retime from %s' % connection\n\t\t\tconnect(connection)" 
+        -sourceType "python" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "Reconnect retime node" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "/software/tools/config/retime/0.6/retimeReconnect.xpm" 
+        -image1 "/software/tools/config/retime/0.6/retimeReconnect.xpm" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from maya import cmds, OpenMaya\nfrom mpc.maya.retime import asset\nretimeNodes = cmds.ls( type='retimeInfo' )\nif len( retimeNodes ) > 1:\n\tOpenMaya.MGlobal.displayError( 'Multiple retime nodes found.  Cannot connect anim curves.' )\nelif len( retimeNodes ) == 0:\n\tOpenMaya.MGlobal.displayError( 'No retime nodes present.  Cannot connect anim curves.' )\nelse:\n\tretimeInstance = asset.getInstance( retimeNodes[0] )\n\tretimeInstance._connectToAnimation()" 
+        -sourceType "python" 
+        -actionIsSubstitute 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 34
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -align "center" 
+        -label "HUD" 
+        -labelOffset 0
+        -font "tinyBoldLabelFont" 
+        -image "/software/tools/config/retime/0.6/retimeHUD.xpm" 
+        -image1 "/software/tools/config/retime/0.6/retimeHUD.xpm" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from maya import cmds, OpenMaya\nfrom mpc.maya.retime import asset\nretimeNodes = cmds.ls( type='retimeInfo' )\nif len( retimeNodes ) > 1:\n\tOpenMaya.MGlobal.displayError( 'Multiple retime nodes found.  Cannot connect anim curves.' )\nelif len( retimeNodes ) == 0:\n\tOpenMaya.MGlobal.displayError( 'No retime nodes present.  Cannot connect anim curves.' )\nelse:\n\tretimeInstance = asset.getInstance( retimeNodes[0] )\n\thud = retimeInstance.hud()\n\thud.rebuild()" 
+        -sourceType "python" 
+        -actionIsSubstitute 0
+    ;
+
+} 
